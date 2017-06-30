@@ -1,0 +1,18 @@
+Package: TrafficBDE
+Type: Package
+Title: Traffic predictions using 
+Version: 0.0.0.9000
+Date: 2017-06-30
+Description: 
+Author: Aikaterini Chatzopoulou <kchatzopoul@okfn.gr>, Kleanthis Koupidis <koupidis@okfn.gr>, Charalampos Bratsas <charalampos.bratsas@okfn.org>
+Maintainer: Aikaterini Chatzopoulou <kchatzopoul@okfn.gr>
+URL: https://github.com/okgreece/TrafficBDE
+BugReports: https://github.com/okgreece/TrafficBDE/issues
+License: GPL-2 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: graphics, grDevices, jsonlite, RCurl, reshape, stats
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

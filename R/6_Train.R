@@ -1,4 +1,27 @@
-#### Train
+#' @title 
+#' Train
+#'  
+#' @description
+#' This function trains the model.
+#' 
+#' @usage Train(List)
+#' 
+#' @param List A list with the following components: trainset, testset, MinMaxFromScaling
+#'  
+#' @details 
+#' This function returns the trained model.
+#' 
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' 
+#' @return The train model
+#' 
+#' @seealso \code{\link{5_PreProcessing}}
+#' 
+#' @rdname Train
+#' 
+#' @import
+#' @export
+
 Train <-function(List){
   
   trainset = List[[1]]

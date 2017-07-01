@@ -1,3 +1,28 @@
+#' @title 
+#' Load traffic data
+#'  
+#' @description
+#' This function loads traffic data and transforms the na values that might exist.
+#' 
+#' @usage loadData()
+#' 
+#' @param 
+#'  
+#' @details 
+#' This function returns a data frame with ones month traffic data of the roads of Thessaloniki.
+#' 
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' 
+#' @return 
+#' Returns a data frame.
+#' 
+#' @seealso 
+#'  
+#' @rdname loadData
+#' 
+#' @import
+#' @export
+#' 
 loadData <- function(){
   
   Data = read_delim("~/NewTryWeeklyData/fcd_speed_012017.csv", 

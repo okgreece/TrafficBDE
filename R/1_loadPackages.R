@@ -1,3 +1,20 @@
+#' @title 
+#' Load necessary packages
+#'  
+#' @description
+#' This function installs the necessary packages for the analysis.
+#' 
+#' @usage loadPackages()
+#'  
+#' @details 
+#' If the packages aren't already installed the function installs and loads them.
+#' 
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' 
+#' @rdname loadPackages
+#' 
+#' @export
+
 loadPackages <- function() {  
   
   # Install Packages

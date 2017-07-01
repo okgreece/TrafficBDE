@@ -1,3 +1,36 @@
+#' @title 
+#' Load data and find train and test data
+#'  
+#' @description
+#' This function finds the roads with the data entries we need and divides tha data into
+#' train and test set.
+#' 
+#' @usage loadSpecData(specDates, df)
+#' 
+#' @param specDates The specific Dates we want.
+#' @param df The data frame with all the data of the roads
+#'  
+#' @details 
+#' This function returns as a list object parameters needed to train the model and predict.
+#' 
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' 
+#' @return A list with the following components:
+#' 
+#' \itemize{
+#' \item trainData The data that will be used for training the model
+#' \item testData The test data
+#' \item trainDataWide 
+#' \item cormatTrain Correlation matrix of the trainData
+#' } 
+#' 
+#' @seealso \code{\link{2_loadPrevDates}}, \code{\link{3_loadData}}
+#' 
+#' @rdname loadSpecData
+#' 
+#' @import
+#' @export
+
 loadSpecData <- function(specDates, df){
   
   specDates$Date = as.character(specDates$Date)

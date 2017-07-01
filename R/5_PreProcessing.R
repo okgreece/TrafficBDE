@@ -1,4 +1,34 @@
-##### PreProcessing #####
+#' @title 
+#' PreProcessing
+#'  
+#' @description
+#' This function processes the data.
+#' 
+#' @usage PreProcessing(DataList)
+#' 
+#' @param DataList A list with the following components: trainData, testData, 
+#' trainDataWide, cormat
+#'  
+#' @details 
+#' This function returns as a list object the parameters needed to train the model and predict.
+#' 
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' 
+#' @return A list with the following components:
+#' 
+#' \itemize{
+#' \item trainset The trainset for the model
+#' \item testset The testset to be predict
+#' \item MinMaxFromScaling The min and max values of the initial dataset
+#' }
+#' 
+#' @seealso \code{\link{4_loadSpecData}}
+#' 
+#' @rdname PreProcessing
+#' 
+#' @import
+#' @export
+
 PreProcessing <- function(DataList){
   
   trainData <- as.data.frame(DataList[1])

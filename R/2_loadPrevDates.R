@@ -1,4 +1,29 @@
-##### Specific Dates #####
+#' @title 
+#' Load Previous Dates
+#'  
+#' @description
+#' This function calculates the previous quarters of the input datetime.
+#' 
+#' @usage loadPrevDates(datetime)
+#' 
+#' @param datetime The input datetime.
+#'  
+#' @details 
+#' This function returns a dataframe with the nine previous quarters of the input datetime.
+#' The format of the input should be "%Y-%m-%d %H:%M:%S"
+#' 
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' 
+#' @return 
+#' Returns a dataframe with one column and nine rows.
+#' 
+#' @seealso
+#' 
+#' @rdname loadPrevDates
+#' 
+#' @import
+#' @export
+
 loadPrevDates <- function(datetime){
   
   print("Getting Previous dates...")  

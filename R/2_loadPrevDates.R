@@ -28,7 +28,7 @@ loadPrevDates <- function(datetime){
   
   print("Getting Previous dates...")  
   
-  currentDay <- strptime(as.character(datetime),format='%Y-%m-%d %H:%M:%S', tz="EEST")
+  currentDay <- strptime(as.character(datetime),format='%Y-%m-%d %H:%M:%S', tz="Europe/Istanbul")
   
   # Apply correction of minutes in case the user does not insert a quarter (e.g 00,15,30,45)
   first <- update(currentDay, hours = hour(currentDay), minutes = 00, second = 00)
@@ -36,11 +36,11 @@ loadPrevDates <- function(datetime){
   third <- update(currentDay, hours = hour(currentDay), minutes = 30, second = 00)
   fourth <- update(currentDay, hours = hour(currentDay), minutes = 45, second = 00)
   
-  if (currentDay %within% interval(first, second - seconds(1), tz="EEST")){
+  if (currentDay %within% interval(first, second - seconds(1), tz="Europe/Istanbul")){
     minute(currentDay) <- 00
-  }else if (currentDay %within% interval(second, third - seconds(1), tz="EEST")){
+  }else if (currentDay %within% interval(second, third - seconds(1), tz="Europe/Istanbul")){
     minute(currentDay) <- 15
-  }else if (currentDay %within% interval(third, fourth - seconds(1), tz="EEST")){
+  }else if (currentDay %within% interval(third, fourth - seconds(1), tz="Europe/Istanbul")){
     minute(currentDay) <- 30
   }else{
     minute(currentDay) <- 45

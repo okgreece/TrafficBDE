@@ -36,14 +36,17 @@ Train <-function(List){
   StartTime = Sys.time() 
   
   n = names(trainset)
-  f <- as.formula(paste("avgSpeed_Current ~", paste(n[!n %in% "avgSpeed_Current"], collapse = " + ")))
+  f <- as.formula(paste("Mean_speed ~", paste(n[!n %in% "Mean_speed"], collapse = " + ")))
   # training phase and CV
   print("Training...")
   fitControl = trainControl(method = "cv",verboseIter = T,seeds = mySeeds) 
-  NNgrid = expand.grid(layer1 = c(4,5,6,7,8,9,10),layer2 = c(3,4,5,6),layer3 = 0)
-  NNOut = train(f, data = trainset,method = "neuralnet", 
-                trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE)
+  NNgrid = expand.grid(layer1 = c(3,4,5),layer2 = c(3,4,5),layer3 = c(3,4,5))
   
+  NNOut = train(f, data = trainset,method = "neuralnet", 
+                trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE,
+                na.action = na.exclude)
+  
+  #qq=neuralnet(f,data=trainset,hidden=c(3,4,5),linear.output=T)
   #NNOut = neuralnet(f,data = trainset, hidden = c(6,6), 
   #                  linear.output = TRUE,stepmax = 1e+08)
   

@@ -50,11 +50,11 @@ loadSpecData <- function(specDates, df){
   testData = DataReduced[DataReduced$Date %in% specDates[-9,],]
   
   trainDataWide = dcast(trainData,Date ~ Link_id,value.var = "Mean_speed")
-  #cormatTrain = cor(trainDataWide[,2:ncol(trainDataWide)])
-  #cormatTrain[is.na(cormatTrain)] <- 0
+  cormatTrain = cor(trainDataWide[,2:ncol(trainDataWide)])
+  cormatTrain[is.na(cormatTrain)] <- 0
   
   # Order the rows and columns by Link ID 
-  DataList = list(trainData = trainData, testData = testData,trainDataWide = trainDataWide) #, cormatTrain = cormatTrain)
+  DataList = list(trainData = trainData, testData = testData,trainDataWide = trainDataWide, cormatTrain = cormatTrain)
   
   return(DataList)
 }

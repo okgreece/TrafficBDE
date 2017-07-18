@@ -29,6 +29,9 @@
 
 loadTrainTest <- function (Data, datetime)
 {
+  # Check if the datetime exist
+  stopifnot(any(Data$Date == datetime) == TRUE)
+  
   Data2 = data.frame (
     Data$Date[2:nrow(Data)],
     Data$Min_speed[1:(nrow(Data)-1)],

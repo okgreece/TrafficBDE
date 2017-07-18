@@ -28,6 +28,9 @@
 
 crossValidation <- function (trainset, k, f, hidden, linear)
 {
+  # Check if the inputs are correct
+  stopifnot(any(is.numeric(k) | is.logical(linear)) == F)
+  
   yourData=trainset
   #Randomly shuffle the data
   yourData<-yourData[sample(nrow(yourData)),]

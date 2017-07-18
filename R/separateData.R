@@ -30,7 +30,9 @@
 
 separateData <- function (Data2, datetime)
 {
-  #datetime <- "2017-01-14 17:15:00"
+  # Check if the datetime exist
+  stopifnot(any(Data$Date == "2017-01-21 02:00:00") == TRUE)
+  
   datetime <- strptime(as.character(datetime),format='%Y-%m-%d %H:%M:%S', tz="Europe/Istanbul")
   
   Data2$Date <- as.POSIXct(strptime(as.character(Data2$Date),format='%Y-%m-%d %H:%M:%S', 

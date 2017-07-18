@@ -27,6 +27,9 @@
 
 Train <- function(trainset, predict, k, linear){
   
+  # Check if the inputs are correct
+  stopifnot(any(is.numeric(k) | is.logical(linear) | any(colnames(trainset) == predict)) == T)
+  
   trainset = trainset
   
   # Setting seeds to reproduce the examples

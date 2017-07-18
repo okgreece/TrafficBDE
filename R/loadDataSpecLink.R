@@ -25,6 +25,10 @@
 #' @export
 
 loadDataSpecLink <- function(Link_id, direction, Data){
+  
+  # Check if the Link_id and the direction exist
+  stopifnot(any (any(Data$Link_id == Link_id) | any(Data$Direction == direction)) == FALSE)
+  
   Data$Date <- strptime(as.character(Data$Date),format='%Y-%m-%d %H:%M:%S', tz="Europe/Istanbul")
   Data <- Data[order(as.numeric(Data$Link_id)),]   #order by id 
   

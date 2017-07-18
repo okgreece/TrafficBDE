@@ -26,21 +26,27 @@
 Prediction <- function(List,NNOut){
   print("Predicting Average Speed for the Next Quarter...")
   # Prediction phase
-  #subset(testset, select=-c(avgSpeed_Current))
-  
+  Min = List[[3]]
+  Max = List[[4]]
   testset = List[[2]]
-  MinMaxFromScaling = List[[3]]
   
-  #testset = testset[,-c(15,23,31,39,47)]
-  #testset = testset[,-c(15)]
-  NNOut.predict = predict(NNOut,subset(testset, select=-c(avgSpeed_Current)))
+  llll=list()
+  for(i in 1:8)  eval(parse(text=paste("llll[[",i,"]]=(testset[,",i,"] - Min[",i,"])/(Max[",i,"] - Min[",i,"] )")))
   
-  Max = max(MinMaxFromScaling)
-  Min = min(MinMaxFromScaling)
+  
+  a=as.data.frame(t(unlist(llll)))
+  names(a)=c("Min_speed", "Max_speed", "Mean_speed", 
+             "Stdev_speed", "Skewness_speed", "Kurtosis_speed", "Entries", "UniqueEntries")
+  
+  NNOut.predict = predict(NNOut,a[,-3])
   
   # Denormalize values and calculate the RMSE
-  Predictions = NNOut.predict*(Max - Min) + Min
-  Observations = testset$avgSpeed_Current*(Max - Min) + Min
+  Predictions = NNOut.predict*(Max[3] - Min[3]) + Min[3]
+  #Observations = testset$avgSpeed_Current*(Max - Min) + Min
+  Observations = testset$Mean_speed
+  
+  NNOut.predict = as.data.frame(NNOut.predict)
+  
   RMSE <- sqrt(mean((Observations - Predictions)^2))
   print(paste("RMSE error",RMSE,""))
   

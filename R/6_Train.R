@@ -46,10 +46,6 @@ Train <-function(List){
                 trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE,
                 na.action = na.exclude)
   
-  #qq=neuralnet(f,data=trainset,hidden=c(3,4,5),linear.output=T)
-  #NNOut = neuralnet(f,data = trainset, hidden = c(6,6), 
-  #                  linear.output = TRUE,stepmax = 1e+08)
-  
   
   print("Training Completed.")
   

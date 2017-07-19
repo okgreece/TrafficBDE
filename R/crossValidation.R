@@ -45,7 +45,7 @@ crossValidation <- function (trainset, k, f, hidden, linear)
     testData<-yourData[testIndexes,]
     trainData<-yourData[-testIndexes,]
     
-    nn<-neuralnet::neuralnet(f, trainData, hidden = as.numeric(hidden),
+    nn<-neuralnet::neuralnet(f, trainData, hidden = unname(unlist(hidden)),
                              rep = 10, err.fct = "sse", linear.output = linear)
   }
   

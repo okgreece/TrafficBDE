@@ -26,28 +26,41 @@
 #' @import
 #' @export
 
-crossValidation <- function (trainset, k, f, hidden, linear)
+crossValidation <- function (trainset, k, f, hidden, linear) ### Consider add parameter for Scaling or not the input data
 {
   # Check if the inputs are correct
   stopifnot(any(is.numeric(k) | is.logical(linear)) == F)
   
-  yourData=trainset
+  data=trainset
   #Randomly shuffle the data
-  yourData<-yourData[sample(nrow(yourData)),]
+  data<-data[sample(nrow(data)),]
   
   #Create10equallysizefolds
-  folds<-cut(seq(1,nrow(yourData)),breaks=k,labels=FALSE)
+  folds<-cut(seq(1,nrow(data)),breaks=k,labels=FALSE)
+  
+  
+  cv.error=matrix(nrow = k,ncol = 1) # ncol = number of errors you want to calculate, e.g. if you want to calculate RMSE use ncol=1
   
   #Perform fold cross validation
   for(i in 1:k){
     
+    
     testIndexes<-which(folds==i,arr.ind=TRUE)
-    testData<-yourData[testIndexes,]
-    trainData<-yourData[-testIndexes,]
+    testData<-data[testIndexes,]
+    trainData<-data[-testIndexes,]
     
     nn<-neuralnet::neuralnet(f, trainData, hidden = unname(unlist(hidden)),
                              rep = 10, err.fct = "sse", linear.output = linear)
+    
+    
+    preds.scaled <- neuralnet::compute(nn, testData)
+    
+    #### function to unscale predicted values
+    
+    #### unscale actual test values
+    
+    ## cv.error[i,]=c( add RMSE variable)
   }
   
-  return(nn)
+  return(nn) #change the returns -> a list with parameters 
 }

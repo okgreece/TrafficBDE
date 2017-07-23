@@ -18,7 +18,7 @@
 #'  
 #' @rdname loadData
 #' 
-#' @import
+#' @import readr
 #' @export
 #' 
 loadData <- function(){

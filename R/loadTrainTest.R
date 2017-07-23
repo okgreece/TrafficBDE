@@ -4,7 +4,7 @@
 #' @description
 #' This function returns a list with the train and test data.
 #' 
-#' @usage loadTrainTest(Data, datetime)
+#' @usage loadTrainTest(Data, datetime, predict)
 #' 
 #' @param Data The historical data
 #' @param datetime The date time the user wants to predict
@@ -33,11 +33,11 @@ loadTrainTest <- function (Data, datetime, predict)
   # Check if the datetime exist
   stopifnot(any(any(Data$Date == datetime) | any(colnames(Data) == predict)) == TRUE)
   
-  Datatest <- subset(DataAll,select=colnames(DataAll)[which(colnames(DataAll)!=predict)])
-  DataPredict <- subset(DataAll,select=colnames(DataAll)[which(colnames(DataAll) == predict)])
+  Datatest <- subset(Data,select=colnames(Data)[which(colnames(Data)!=predict)])
+  DataPredict <- subset(Data,select=colnames(Data)[which(colnames(Data) == predict)])
   
-  Data2 = data.frame(Datatest[2:nrow(DataAll),1],
-                     Datatest[1:(nrow(DataAll)-1),-1],DataPredict[2:nrow(DataAll),])
+  Data2 = data.frame(Datatest[2:nrow(Data),1],
+                     Datatest[1:(nrow(Data)-1),-1],DataPredict[2:nrow(Data),])
   
   colnames(Data2) = c(colnames(Datatest),predict)
   

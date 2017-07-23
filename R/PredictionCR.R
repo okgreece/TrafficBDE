@@ -4,10 +4,11 @@
 #' @description
 #' This function predicts the average speed of the road.
 #' 
-#' @usage PredictionCR(List,NNOut)
+#' @usage PredictionCR(List,NNOut,predict)
 #' 
 #' @param List A list with the following components: trainset, testset, MinMaxFromScaling
 #' @param NNout The train model
+#' @param predict The value to be predicted
 #'  
 #' @details 
 #' This function returns the predicted average speed.
@@ -16,11 +17,11 @@
 #' 
 #' @return The predicted average speed of the road
 #' 
-#' @seealso \code{\link{5_PreProcessing}}, \code{\link{6_Train}}
+#' @seealso \code{\link{PreProcessingLink}}, \code{\link{TrainCR}}
 #' 
 #' @rdname PredictionCR
 #' 
-#' @import
+#' @import caret
 #' @export
 
 PredictionCR <- function(List,NNOut,predict){
@@ -39,14 +40,15 @@ PredictionCR <- function(List,NNOut,predict){
   names(a)=c("Min_speed", "Max_speed", "Mean_speed", 
              "Stdev_speed", "Skewness_speed", "Kurtosis_speed", "Entries", "UniqueEntries")
   
-  NNOut.predict = predict(NNOut,a[,-3])
+  a <- subset(a,select=colnames(a)[which(colnames(a)!=predict)])
+  NNOut.predict = predict(NNOut,a)
   
   Min = List[[3]][names(List[[3]])==predict]
   Max = List[[4]][names(List[[4]])==predict]
   # Denormalize values and calculate the RMSE
   Predictions = NNOut.predict*(Max - Min) + Min
 
-  Observations = testset$Mean_speed
+  Observations = testset[which(colnames(testset)==predict)]
   
   NNOut.predict = as.data.frame(NNOut.predict)
   

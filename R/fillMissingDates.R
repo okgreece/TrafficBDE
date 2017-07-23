@@ -20,16 +20,20 @@
 #' 
 #' @rdname fillMissingDates
 #' 
-#' @import
+#' @import lubridate, dplyr, zoo
 #' @export
 
 fillMissingDates <- function(Data, datetime){
   
-  ts <- seq.POSIXt(min(Data$Date), 
-                   strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"), 
-                   by="15 min")
+  datetime <- strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul")
+
+  twoweeks <- datetime - days(14)
   
-  ts <- seq.POSIXt(min(Data$Date), as.POSIXlt(datetime), by="15 min")
+  if(min(Data$Date) < twoweeks){minDate <- twoweeks}else{minDate <- min(Data$Date)}
+  
+  ts <- seq.POSIXt(minDate, datetime, by="15 min")
+  
+  ts <- seq.POSIXt(as.POSIXlt(minDate), as.POSIXlt(datetime), by="15 min")
   ts <- format.POSIXct(ts,'%Y-%m-%d %H:%M:%S')
   
   df <- data.frame(Date=ts)

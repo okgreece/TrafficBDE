@@ -11,13 +11,13 @@
 #' @param Data The historical data of the roads of Thessaloniki
 #'  
 #' @details 
-#' This function returns the predicted average speed.
+#' This function returns a data frame with the historical data of a specific road.
 #' 
 #' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
 #' 
 #' @return A data frame with the data of a specific road
 #' 
-#' @seealso \code{\link{3_loadData}}
+#' @seealso \code{\link{loadData}}
 #' 
 #' @rdname loadDataSpecLink
 #' 

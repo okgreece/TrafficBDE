@@ -4,9 +4,10 @@
 #' @description
 #' This function trains the model.
 #' 
-#' @usage TrainCR(List)
+#' @usage TrainCR(List,predict)
 #' 
-#' @param List A list with the following components: trainset, testset, MinMaxFromScaling
+#' @param List A list with the following components: trainset, testset, Min, Max
+#' @param predict The value to be predicted
 #'  
 #' @details 
 #' This function returns the trained model.
@@ -15,11 +16,11 @@
 #' 
 #' @return The train model
 #' 
-#' @seealso \code{\link{5_PreProcessing}}
+#' @seealso \code{\link{PreProcessingLink}}
 #' 
 #' @rdname TrainCR
 #' 
-#' @import
+#' @import caret
 #' @export
 
 TrainCR <-function(List, predict){
@@ -41,8 +42,8 @@ TrainCR <-function(List, predict){
   
   # training phase
   print("Training...")
-  fitControl = caret::trainControl(method = "cv",verboseIter = T,seeds = mySeeds) 
-  NNgrid = expand.grid(layer1 = c(5,6,7,8,9),layer2 = c(0),layer3 = c(0))
+  fitControl = caret::trainControl(method = "none",verboseIter = T,seeds = mySeeds) 
+  NNgrid = expand.grid(layer1 = c(5),layer2 = c(3),layer3 = c(4))
   
   NNOut = caret::train(f, data = trainset,method = "neuralnet", 
                 trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE,

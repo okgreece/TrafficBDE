@@ -20,7 +20,9 @@
 #' 
 #' @rdname fillMissingDates
 #' 
-#' @import lubridate, dplyr, zoo
+#' @import lubridate
+#' @import dplyr
+#' @import zoo
 #' @export
 
 fillMissingDates <- function(Data, datetime){

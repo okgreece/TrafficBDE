@@ -20,8 +20,7 @@
 #' @seealso \code{\link{loadData}}
 #' 
 #' @rdname loadDataSpecLink
-#' 
-#' @import
+#'
 #' @export
 
 loadDataSpecLink <- function(Link_id, direction, Data){

@@ -24,8 +24,7 @@
 #' @seealso
 #' 
 #' @rdname loadTrainTest
-#' 
-#' @import
+#'
 #' @export
 
 loadTrainTest <- function (Data, datetime, predict)

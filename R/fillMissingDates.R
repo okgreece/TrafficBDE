@@ -38,10 +38,10 @@ fillMissingDates <- function(Data, datetime){
   df$Date <- as.POSIXct(df$Date)
   Data$Date <- as.POSIXct(Data$Date)
   
-  data_with_missing_times <- full_join(df,Data, by="Date")
+  data_with_missing_times <- dplyr::full_join(df,Data, by="Date")
   data_with_missing_times <- data_with_missing_times[,-c(2,3)]
   
-  data_with_missing_times <- na.locf(data_with_missing_times)
+  data_with_missing_times <- zoo::na.locf(data_with_missing_times)
   
   return(data_with_missing_times)
 }

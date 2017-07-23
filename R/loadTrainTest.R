@@ -8,6 +8,7 @@
 #' 
 #' @param Data The historical data
 #' @param datetime The date time the user wants to predict
+#' @param predict The value he user wants to predict must be a column name of the data set
 #'  
 #' @details 
 #' This function returns a list with the train and test data that will be used for train and prediction.
@@ -27,24 +28,18 @@
 #' @import
 #' @export
 
-loadTrainTest <- function (Data, datetime)
+loadTrainTest <- function (Data, datetime, predict)
 {
   # Check if the datetime exist
-  stopifnot(any(Data$Date == datetime) == TRUE)
+  stopifnot(any(any(Data$Date == datetime) | any(colnames(Data) == predict)) == TRUE)
   
-  Data2 = data.frame (
-    Data$Date[2:nrow(Data)],
-    Data$Min_speed[1:(nrow(Data)-1)],
-    Data$Max_speed[1:(nrow(Data)-1)],
-    Data$Mean_speed[2:nrow(Data)],
-    Data$Stdev_speed[1:(nrow(Data)-1)],
-    Data$Skewness_speed[1:(nrow(Data)-1)],
-    Data$Kurtosis_speed[1:(nrow(Data)-1)],
-    Data$Entries[1:(nrow(Data)-1)],
-    Data$UniqueEntries[1:(nrow(Data)-1)]
-  )
-  colnames(Data2) = c("Date", "Min_speed", "Max_speed", "Mean_speed", "Stdev_speed", 
-                      "Skewness_speed", "Kurtosis_speed", "Entries", "UniqueEntries")
+  Datatest <- subset(DataAll,select=colnames(DataAll)[which(colnames(DataAll)!=predict)])
+  DataPredict <- subset(DataAll,select=colnames(DataAll)[which(colnames(DataAll) == predict)])
+  
+  Data2 = data.frame(Datatest[2:nrow(DataAll),1],
+                     Datatest[1:(nrow(DataAll)-1),-1],DataPredict[2:nrow(DataAll),])
+  
+  colnames(Data2) = c(colnames(Datatest),predict)
   
   datetime <- strptime(as.character(datetime),format='%Y-%m-%d %H:%M:%S', tz="Europe/Istanbul")
   

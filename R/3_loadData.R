@@ -5,11 +5,9 @@
 #' This function loads the traffic data.
 #' 
 #' @usage loadData()
-#' 
-#' @param 
 #'  
 #' @details 
-#' This function returns a data frame with traffic data of the roads of Thessaloniki ordered by the roads.
+#' This function returns a data frame with the traffic data of the roads of Thessaloniki ordered by the roads.
 #' 
 #' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
 #' 
@@ -25,7 +23,7 @@
 #' 
 loadData <- function(){
   
-  Data <- read_delim("~/imet_Links/fcd_speed_012017.csv", 
+  Data <- readr::read_delim("~/imet_Links/fcd_speed_012017.csv", 
                      "\t", escape_double = FALSE, col_names = FALSE, 
                      trim_ws = TRUE)
   

@@ -25,12 +25,14 @@
 #' @import
 #' @export
 
-Train <- function(trainset, predict, k, linear){
+Train <- function(List, predict, linear){
   
   # Check if the inputs are correct
-  stopifnot(any(is.numeric(k) | is.logical(linear) | any(colnames(trainset) == predict)) == T)
+ #stopifnot(any(is.numeric(k) | is.logical(linear) | any(colnames(trainset) == predict)) == T)
   
-  trainset = trainset
+  trainset = List[[1]]
+  Min = List[[3]][names(List[[3]])==predict]
+  Max = List[[4]][names(List[[4]])==predict]
   
   # Setting seeds to reproduce the examples
   mySeeds = as.list(numeric(0))
@@ -43,21 +45,24 @@ Train <- function(trainset, predict, k, linear){
   
   n = names(trainset)
   
-  if (predict == "Mean_speed"){
-    f <- as.formula(paste("Mean_speed ~", paste(n[!n %in% "Mean_speed"], collapse = " + ")))
-  }else{
-    f <- as.formula(paste("Entries ~", paste(n[!n %in% "Entries"], collapse = " + ")))
-  }
+  f <- as.formula(paste(predict, paste("~"), paste(n[!n %in% predict], collapse = " + ")))
   
   # training phase and CV
-  NNgrid = expand.grid(layer1 = c(3,4,5),layer2 = c(3,4,5),layer3 = c(3,4,5))
+  #NNgrid = expand.grid(layer1 = c(3,4,5),layer2 = c(3,4,5),layer3 = c(3,4,5))
   
-  for (j in 1:nrow(NNgrid)){
+  #for (j in 1:nrow(NNgrid)){
     
-    NNout <- crossValidation(trainset, k, f, NNgrid[j,], linear)
+   # nn[[j]] <- crossValidation(trainset, k, f, NNgrid[j,], linear, Min, Max)
     
-  }
+    #if(j>1)
+    #{
+     # if(mean(nn[[j]][[1]]) > mean(nn[[j-1]][[1]])){NNout = nn[[j-1]][[2]]}
+    #}
+    
+  #}
   
+  NNOut<-neuralnet::neuralnet(f, trainset, hidden = c(4,5,3),
+                         rep = 10, err.fct = "sse", linear.output = linear)
   print("Training Completed.")
   
   EndTime = Sys.time()

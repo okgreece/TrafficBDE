@@ -4,7 +4,7 @@
 #' @description
 #' This function trains the model.
 #' 
-#' @usage Train(List)
+#' @usage TrainCR(List)
 #' 
 #' @param List A list with the following components: trainset, testset, MinMaxFromScaling
 #'  
@@ -17,14 +17,15 @@
 #' 
 #' @seealso \code{\link{5_PreProcessing}}
 #' 
-#' @rdname Train
+#' @rdname TrainCR
 #' 
 #' @import
 #' @export
 
-Train <-function(List){
+TrainCR <-function(List, predict){
   
   trainset = List[[1]]
+  stopifnot(any(colnames(trainset) == predict) == T)
   
   # Setting seeds to reproduce the examples
   mySeeds = as.list(numeric(0))
@@ -36,13 +37,14 @@ Train <-function(List){
   StartTime = Sys.time() 
   
   n = names(trainset)
-  f <- as.formula(paste("Mean_speed ~", paste(n[!n %in% "Mean_speed"], collapse = " + ")))
-  # training phase and CV
-  print("Training...")
-  fitControl = trainControl(method = "cv",verboseIter = T,seeds = mySeeds) 
-  NNgrid = expand.grid(layer1 = c(3,4,5),layer2 = c(3,4,5),layer3 = c(3,4,5))
+  f <- as.formula(paste(predict, paste("~"), paste(n[!n %in% predict], collapse = " + ")))
   
-  NNOut = train(f, data = trainset,method = "neuralnet", 
+  # training phase
+  print("Training...")
+  fitControl = caret::trainControl(method = "cv",verboseIter = T,seeds = mySeeds) 
+  NNgrid = expand.grid(layer1 = c(5,6,7,8,9),layer2 = c(0),layer3 = c(0))
+  
+  NNOut = caret::train(f, data = trainset,method = "neuralnet", 
                 trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE,
                 na.action = na.exclude)
   

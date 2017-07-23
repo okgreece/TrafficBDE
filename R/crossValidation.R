@@ -17,7 +17,12 @@
 #' 
 #' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
 #' 
-#' @return The trained model
+#' @return A list with the following components:
+#' 
+#' \itemize{
+#' \item cv.error The cross validation error
+#' \item nn The train model
+#' }
 #' 
 #' @seealso \code{\link{Train}}
 #' 
@@ -26,10 +31,10 @@
 #' @import
 #' @export
 
-crossValidation <- function (trainset, k, f, hidden, linear) ### Consider add parameter for Scaling or not the input data
+crossValidation <- function (trainset, k, f, hidden, linear, Min, Max) ### Consider add parameter for Scaling or not the input data
 {
   # Check if the inputs are correct
-  stopifnot(any(is.numeric(k) | is.logical(linear)) == F)
+  stopifnot(any(is.numeric(k) | is.logical(linear)) == T)
   
   data=trainset
   #Randomly shuffle the data
@@ -53,14 +58,16 @@ crossValidation <- function (trainset, k, f, hidden, linear) ### Consider add pa
                              rep = 10, err.fct = "sse", linear.output = linear)
     
     
-    preds.scaled <- neuralnet::compute(nn, testData)
+    preds.scaled <- neuralnet::compute(nn, testData[,1:5])
     
-    #### function to unscale predicted values
+    unscaled <- function(x){x*(Max - Min) + Min}
     
-    #### unscale actual test values
+    Test.unscaled <- unscaled(testData)
+    Predicted.unscaled <- unscaled(preds.scaled$net.result)
     
-    ## cv.error[i,]=c( add RMSE variable)
+    cv.error[i,] = sqrt(mean((Test.unscaled$Mean_speed - Predicted.unscaled)^2))
   }
   
-  return(nn) #change the returns -> a list with parameters 
+  nn <- list(cv.error,nn)
+  return(nn) 
 }

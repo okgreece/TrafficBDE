@@ -20,8 +20,6 @@
 #' 
 #' @rdname fillMissingDates
 #' 
-#' @import lubridate
-#' @import dplyr
 #' @import zoo
 #' @export
 

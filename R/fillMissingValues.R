@@ -24,8 +24,8 @@
 fillMissingValues <- function(Data){
   
   # Check if there are na or null values
-  stopifnot(any(is.na(Data) | is.null(Data)) == T)
-  
+  #stopifnot(any(is.na(Data) | is.null(Data)) == T)
+  if (any(is.na(Data) | is.null(Data)) == F){ 
   Data$Skewness_speed[Data$Entries==2] <- (((Data$Min_speed[Data$Entries==2] - Data$Mean_speed[Data$Entries==2])^3 +
                                               (Data$Max_speed[Data$Entries==2] - Data$Mean_speed[Data$Entries==2])^3)/2) / 
     (Data$Stdev_speed[Data$Entries==2])^3
@@ -41,11 +41,11 @@ fillMissingValues <- function(Data){
                                                   Data$Max_speed[Data$Entries==3])- Data$Mean_speed[Data$Entries==3])^4)/2)/
     ((Data$Stdev_speed[Data$Entries==3])^4)
   
-  Data$Stdev_speed[Data$Entries==1] <- 0
+  Data$Stdev_speed[Data$Entries==1] <- 0.00001
   
-  Data$Skewness_speed[Data$Min_speed== Data$Max_speed] <- 0
+  Data$Skewness_speed[Data$Min_speed== Data$Max_speed] <- 0.00001
   
   Data$Kurtosis_speed[Data$Min_speed== Data$Max_speed] <- 3
-  
+  }
   return(Data)
 }

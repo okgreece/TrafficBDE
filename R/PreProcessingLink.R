@@ -32,12 +32,10 @@
 PreProcessingLink <- function(DataList){
   
   trainData <- as.data.frame(DataList[1])
-  names(trainData)<- c("Date",  "Min_speed", "Max_speed", "Mean_speed", 
-                       "Stdev_speed", "Skewness_speed", "Kurtosis_speed", "Entries", "UniqueEntries")
+  names(trainData)<- names(DataList[[1]])
   
   testData <- as.data.frame(DataList[2])
-  names(testData) <- c("Date", "Min_speed", "Max_speed", "Mean_speed", 
-                       "Stdev_speed", "Skewness_speed", "Kurtosis_speed", "Entries", "UniqueEntries")
+  names(testData) <- names(DataList[[2]])
   
   trainset <- trainData[,2:ncol(trainData)] 
   rownames(trainset) <- as.character(trainData$Date)

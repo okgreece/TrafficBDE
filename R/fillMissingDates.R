@@ -29,7 +29,8 @@ fillMissingDates <- function(Data, datetime){
   
   datetime <- strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul")
 
-  twoweeks <- datetime - days(14)
+  days <- lubridate::days(14)
+  twoweeks <- datetime - days
   
   if(min(Data$Date) < twoweeks){minDate <- twoweeks}else{minDate <- min(Data$Date)}
   

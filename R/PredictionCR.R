@@ -41,21 +41,23 @@ PredictionCR <- function(List,NNOut,predict){
              "Stdev_speed", "Skewness_speed", "Kurtosis_speed", "Entries", "UniqueEntries")
   
   a <- subset(a,select=colnames(a)[which(colnames(a)!=predict)])
-  NNOut.predict = predict(NNOut,a)
+  NNOut.predict = caret::predict(NNOut,a)
   
   Min = List[[3]][names(List[[3]])==predict]
   Max = List[[4]][names(List[[4]])==predict]
   # Denormalize values and calculate the RMSE
   Predictions = NNOut.predict*(Max - Min) + Min
 
-  Observations = testset[which(colnames(testset)==predict)]
-  
+  Observations = testset[,which(colnames(testset)==predict)]
+
   NNOut.predict = as.data.frame(NNOut.predict)
   
   RMSE <- sqrt(mean((Observations - Predictions)^2))
   print(paste("RMSE error",RMSE,""))
   
-  result = list(Predictions,Observations,RMSE)
+  result = as.numeric(c(Predictions,
+                      Observations,
+                      RMSE))
   
   return(result)
 }

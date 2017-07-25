@@ -23,6 +23,7 @@
 #' 
 #' @rdname kStepsForward
 #' 
+#' 
 #' @export
 
 kStepsForward <- function (steps, Link_id, direction, datetime, predict){
@@ -31,9 +32,13 @@ kStepsForward <- function (steps, Link_id, direction, datetime, predict){
   DataLink <- loadDataSpecLink(Link_id, direction, Data)
   
   DataLinkNA <- fillMissingValues(DataLink)
+  DataLinkNA <- na.omit(DataLinkNA)
   
   datetime <- as.POSIXct(strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"))
   minutes <- lubridate::minute(datetime)
+  
+  Result = matrix(nrow = steps , ncol = 3,dimnames = list(c(1:steps),
+                                                          c("Predicted", "Real Value", "RMSE")))
   
   for (i in 1:(steps)){
     dateSt <- update(datetime , minutes = minutes -15*(steps-i))
@@ -46,9 +51,12 @@ kStepsForward <- function (steps, Link_id, direction, datetime, predict){
     
     NNOut <- TrainCR(List, predict)
     
-    Result <- PredictionCR(List,NNOut,predict)
     
-    DataLinkNA[which(colnames(DataLinkNA)==predict)][which(DataLinkNA$Date == dateSt),] = Result[[1]] #next step
+    Result[i,] <- PredictionCR(List,NNOut,predict)
+    
+    rownames(Result)[i] <- as.character(dateSt)
+    
+    DataLinkNA[which(DataLinkNA$Date == dateSt),which(colnames(DataLinkNA)==predict)] = Result[i,1] #next step
     
   }
   return(Result)

@@ -29,13 +29,14 @@
 fillMissingDates <- function(Data, datetime){
   
   datetime <- strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul")
+  Data$Date <- as.POSIXct(strptime(Data$Date,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"))
   
   ts <- seq.POSIXt(min(Data$Date), datetime, by="15 min")
   
   ts <- seq.POSIXt(as.POSIXlt(min(Data$Date)), as.POSIXlt(datetime), by="15 min")
   ts <- format.POSIXct(ts,'%Y-%m-%d %H:%M:%S')
   
-  df$Date <- as.data.frame(ts)
+  df <- data.frame(Date=ts)
   df$Date <- as.POSIXct(strptime(as.character(df$Date),format='%Y-%m-%d %H:%M:%S', 
                                  tz="Europe/Istanbul"))
   df$Date <- as.POSIXct(df$Date)

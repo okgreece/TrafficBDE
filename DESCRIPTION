@@ -11,7 +11,7 @@ BugReports: https://github.com/okgreece/TrafficBDE/issues
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: graphics, grDevices, jsonlite, RCurl, reshape, stats
+Imports: caret, graphics, grDevices, dplyr, jsonlite, lubridate, RCurl, readr, reshape, stats, zoo
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown

@@ -58,8 +58,8 @@ fillMissingDates <- function(Data, datetime){
   
   data_with_missing_times$Date <- as.POSIXct(strptime(as.character(data_with_missing_times$Date),
                                                       format='%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"))
-  if(min(data_with_missing_times$Date) < twoweeks)
-    {minDate <- twoweeks
+  if(min(data_with_missing_times$Date) < twoweeks){
+    minDate <- twoweeks
   }else{minDate <- min(data_with_missing_times$Date)}
   
   data_with_missing_times <- subset(data_with_missing_times, Date >= minDate)

@@ -69,13 +69,25 @@ The first example provides, in one step, the prediction of the Mean speed at 14.
 
 ``` r
 library(TrafficBDE)
-#kStepsForward(steps = 1, Link_id = "163204843", direction = "1", datetime = "2017-01-27 14:00:00", predict = "Mean_speed")
+# kStepsForward(
+#   steps = 1, 
+#   Link_id = "163204843", 
+#   direction = "1", 
+#   datetime = "2017-01-27 14:00:00", 
+#   predict = "Mean_speed"
+#   )
 ```
 
 The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017
 
 ``` r
-#kStepsForward(steps = 1, Link_id = "163204843", direction = "1", datetime = "2017-01-15 20:00:00", predict = "Entries")
+# kStepsForward(
+#   steps = 1, 
+#   Link_id = "163204843", 
+#   direction = "1", 
+#   datetime = "2017-01-15 20:00:00", 
+#   predict = "Entries"
+#   )
 ```
 
 Github:

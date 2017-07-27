@@ -18,7 +18,7 @@ A list with the following components:
 \itemize{
 \item trainsData The trainData for the model
 \item testsData The testData to be predict
- }
+}
 }
 \description{
 This function returns a list with the train and test data.
@@ -27,7 +27,7 @@ This function returns a list with the train and test data.
 This function returns a list with the train and test data that will be used for train and prediction.
 }
 \seealso{
-
+...
 }
 \author{
 Aikaterini Chatzopoulou, Kleanthis Koupidis

@@ -27,7 +27,7 @@ This function processes the data.
 This function returns as a list object the parameters needed to train the model and predict.
 }
 \seealso{
-
+...
 }
 \author{
 Aikaterini Chatzopoulou, Kleanthis Koupidis

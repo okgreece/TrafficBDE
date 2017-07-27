@@ -16,7 +16,7 @@ This function loads the traffic data.
 This function returns a data frame with the traffic data of the roads of Thessaloniki ordered by the roads.
 }
 \seealso{
-
+...
 }
 \author{
 Aikaterini Chatzopoulou, Kleanthis Koupidis

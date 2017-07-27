@@ -19,7 +19,7 @@ This function fills the missing values from the data.
 This function returns a data frame without missing values.
 }
 \seealso{
-
+...
 }
 \author{
 Aikaterini Chatzopoulou, Kleanthis Koupidis

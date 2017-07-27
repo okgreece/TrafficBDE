@@ -9,9 +9,9 @@ PredictionCR(List,NNOut,predict)
 \arguments{
 \item{List}{A list with the following components: trainset, testset, MinMaxFromScaling}
 
-\item{predict}{The value to be predicted}
+\item{NNOut}{The train model}
 
-\item{NNout}{The train model}
+\item{predict}{The value to be predicted}
 }
 \value{
 The predicted average speed of the road

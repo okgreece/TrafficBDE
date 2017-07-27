@@ -4,7 +4,7 @@
 \alias{kStepsForward}
 \title{k Steps Forward}
 \usage{
-lkStepsForward (steps, Link_id, direction, datetime, predict)
+kStepsForward (steps, Link_id, direction, datetime, predict)
 }
 \arguments{
 \item{steps}{The number of steps}

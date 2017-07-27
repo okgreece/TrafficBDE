@@ -21,7 +21,6 @@
 #' 
 #' @rdname PredictionCR
 #' 
-#' @import caret
 #' @export
 
 PredictionCR <- function(List,NNOut,predict){

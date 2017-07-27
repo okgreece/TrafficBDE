@@ -13,6 +13,13 @@ loadTrainTest(Data, datetime, predict)
 
 \item{predict}{The value he user wants to predict must be a column name of the data set}
 }
+\value{
+A list with the following components:
+\itemize{
+\item trainsData The trainData for the model
+\item testsData The testData to be predict
+ }
+}
 \description{
 This function returns a list with the train and test data.
 }

@@ -23,7 +23,7 @@
 #' 
 #' @rdname kStepsForward
 #' 
-#' 
+#' @importFrom lubridate minute
 #' @export
 
 kStepsForward <- function (steps, Link_id, direction, datetime, predict){

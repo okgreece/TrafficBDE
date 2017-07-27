@@ -20,7 +20,8 @@
 #' 
 #' @rdname TrainCR
 #' 
-#' @import caret
+#' @importFrom caret trainControl
+#' @importFrom caret train
 #' @export
 
 TrainCR <-function(List, predict){

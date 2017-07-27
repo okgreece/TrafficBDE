@@ -16,10 +16,10 @@
 #' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
 #' 
 #' @return A list with the following components:
-#' 
 #' \itemize{
 #' \item trainsData The trainData for the model
 #' \item testsData The testData to be predict
+#' }
 #'  
 #' @seealso
 #' 

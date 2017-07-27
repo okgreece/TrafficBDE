@@ -4,7 +4,7 @@
 \alias{loadData}
 \title{Load traffic data}
 \usage{
-loadData()
+loadData(path)
 }
 \value{
 Returns a data frame.
@@ -14,9 +14,6 @@ This function loads the traffic data.
 }
 \details{
 This function returns a data frame with the traffic data of the roads of Thessaloniki ordered by the roads.
-}
-\seealso{
-...
 }
 \author{
 Aikaterini Chatzopoulou, Kleanthis Koupidis

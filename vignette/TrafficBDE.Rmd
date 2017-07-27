@@ -9,16 +9,16 @@ output: html_document
 
 This package was created in order to enable the creation of a neural network model, for the needs of a European project. “TrafficBDE” includes functions for properly formulating the data, training the neural network and predicted the wanted variable. This document introduces you to TrafficBDE's basic set of tools.
 
-The user should use only the `kStepsForward` function.
+The user should use only the `loadData` and the `kStepsForward` functions. The first one to load the historical data and the second for the computation of the predicted value.
 
 ## Input
 
-The input dataset of the main function is an excel file. There are different parameters that a user could specify and interact with the results. The parameters: “steps”, “predict” and “Link_id” should be defined by the user, to form the dataset. Then an automated process formulates the data in order to provide the prediction of the wanted variable for the desired time and road.
+The input dataset of the main function could be a link, a csv, an excel file. There are different parameters that a user could specify and interact with the results. The parameters: "path", "Link_id", "direction", "datetime", "predict" and "steps" should be defined by the user, to form the dataset. Then an automated process formulates the data in order to provide the prediction of the wanted variable for the desired time and road.
 
 +-------------+--------------------------------------------------------------------------------------------+
 | Input       | Description                                                                                |
 +=============+============================================================================================+
-| steps       | How many steps forward the prediction will be                                              |
+| path        | The path containing the historical data                                                    |
 +-------------+--------------------------------------------------------------------------------------------+
 | Link_id     | The Link_id of the road                                                                    |
 +-------------+--------------------------------------------------------------------------------------------+
@@ -27,6 +27,8 @@ The input dataset of the main function is an excel file. There are different par
 | datetime    | The date time for the pediction. The format of the datetime should be '%Y-%m-%d %H:%M:%S'  |
 +-------------+--------------------------------------------------------------------------------------------+
 | predict     | The argument to be predicted                                                               |
++-------------+--------------------------------------------------------------------------------------------+
+| steps       | How many steps forward the prediction will be                                              |
 +-------------+--------------------------------------------------------------------------------------------+
 
 Table: A sort description about the inputs. 
@@ -43,11 +45,15 @@ The first example provides, in one step, the prediction of the Mean speed at 14.
 
 ```{r, warning=FALSE}
 library(TrafficBDE)
-kStepsForward(steps = 1, Link_id = "163204843", direction = "1", datetime = "2017-01-27 14:00:00", predict = "Mean_speed")
+Data <- data.table::fread("D:/packages/okgreece/TrafficBDE/data/163204843_1.csv")
+Data <- as.data.frame(Data[,-1])
+
+
+kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-27 14:00:00", predict = "Mean_speed", steps = 1)
 ```
 
 The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017
 
-```{r, warning=FALSE}
-kStepsForward(steps = 1, Link_id = "163204843", direction = "1", datetime = "2017-01-15 20:00:00", predict = "Entries")
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-15 20:00:00", predict = "Entries", steps = 1)
 ```

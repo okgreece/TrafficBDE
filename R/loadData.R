@@ -4,7 +4,7 @@
 #' @description
 #' This function loads the traffic data.
 #' 
-#' @usage loadData()
+#' @usage loadData(path)
 #'  
 #' @details 
 #' This function returns a data frame with the traffic data of the roads of Thessaloniki ordered by the roads.
@@ -14,21 +14,22 @@
 #' @return 
 #' Returns a data frame.
 #' 
-#' @seealso ...
 #'  
 #' @rdname loadData
 #' 
-#' @import readr
+#' @importFrom RCurl url.exists
+#' @importFrom data.table fread
+#' 
 #' @export
 #' 
-loadData <- function(){
+loadData <- function(path){
   
-  #Data <- readr::read_delim("~/imet_Links/fcd_speed_012017.csv", 
-   #                "\t", escape_double = FALSE, col_names = FALSE, 
-    #                 trim_ws = TRUE)
+  stopifnot(file.exists(path)==T | RCurl::url.exists(path)==T)
   
-  # Data <- "link"
+  Data <- data.table::fread(path)
+  
   Data <- as.data.frame(Data)
+  
   colnames(Data) = c("Link_id", "Direction", "Date", "Min_speed", "Max_speed", "Mean_speed", 
                      "Stdev_speed", "Skewness_speed", "Kurtosis_speed", "Entries", "UniqueEntries")
   

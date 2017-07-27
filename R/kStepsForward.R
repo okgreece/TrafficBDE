@@ -4,13 +4,14 @@
 #' @description
 #' This function predictes the wanted value after k steps.
 #' 
-#' @usage kStepsForward (steps, Link_id, direction, datetime, predict)
+#' @usage kStepsForward (Data, Link_id, direction, datetime, predict, steps)
 #' 
-#' @param steps The number of steps
+#' @param Data A data frame with the historical data
 #' @param Link_id A character with the id of the road needed
 #' @param direction The direction of the road
 #' @param datetime The datetime wanted
 #' @param predict The value to be predicted
+#' @param steps The number of steps
 #'  
 #' @details 
 #' This function returns the predicted value after k steps.
@@ -26,21 +27,11 @@
 #' @importFrom lubridate minute
 #' @export
 
-kStepsForward <- function (steps, Link_id, direction, datetime, predict){
-  #Data <- loadData()
+kStepsForward <- function (Data, Link_id, direction, datetime, predict, steps){
   
-  #DataLink <- loadDataSpecLink(Link_id, direction, Data)
-  setwd(".")
-  wd<-setwd(".")
-  print(wd);
-  
-  DataLink <- try(as.data.frame(utils::read.csv(file.path(wd, "data",
-                                  paste(paste(Link_id,direction,sep="_"), ".csv",sep="")), 
-                                  header= TRUE, sep = ","),silent=FALSE))
-  DataLink <- DataLink[,-1]
+  DataLink <- loadDataSpecLink(Link_id, direction, Data)
   
   DataLinkNA <- fillMissingValues(DataLink)
-  #DataLinkNA <- na.omit(DataLinkNA)
   
   datetime <- as.POSIXct(strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"))
   minutes <- lubridate::minute(datetime)

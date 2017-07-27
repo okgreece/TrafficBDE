@@ -4,10 +4,10 @@
 \alias{kStepsForward}
 \title{k Steps Forward}
 \usage{
-kStepsForward (steps, Link_id, direction, datetime, predict)
+kStepsForward (Data, Link_id, direction, datetime, predict, steps)
 }
 \arguments{
-\item{steps}{The number of steps}
+\item{Data}{A data frame with the historical data}
 
 \item{Link_id}{A character with the id of the road needed}
 
@@ -16,6 +16,8 @@ kStepsForward (steps, Link_id, direction, datetime, predict)
 \item{datetime}{The datetime wanted}
 
 \item{predict}{The value to be predicted}
+
+\item{steps}{The number of steps}
 }
 \value{
 The predicted value

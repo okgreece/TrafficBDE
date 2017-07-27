@@ -42,8 +42,8 @@ TrainCR <-function(List, predict){
   
   # training phase
   print("Training...")
-  fitControl = caret::trainControl(method = "none",verboseIter = T,seeds = mySeeds) 
-  NNgrid = expand.grid(layer1 = c(5),layer2 = c(3),layer3 = c(4))
+  fitControl = caret::trainControl(method = "cv",verboseIter = T,seeds = mySeeds) 
+  NNgrid = expand.grid(layer1 = c(4,5),layer2 = c(3,4),layer3 = c(4))
   
   NNOut = caret::train(f, data = trainset,method = "neuralnet", 
                 trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE,

@@ -3,7 +3,7 @@ Type: Package
 Title: Traffic predictions using 
 Version: 0.0.0.9000
 Date: 2017-06-30
-Description: 
+Description: TrafficBDE is a package developed for TrafficBDE datasets, to predict and return the wanted variable. It enables the creation of a neural network model, it trains the model in order to provide the most acccurate prediction. This package includes functions for appropriately shaping the data.
 Author: Aikaterini Chatzopoulou <kchatzopoul@okfn.gr>, Kleanthis Koupidis <koupidis@okfn.gr>, Charalampos Bratsas <charalampos.bratsas@okfn.org>
 Maintainer: Aikaterini Chatzopoulou <kchatzopoul@okfn.gr>
 URL: https://github.com/okgreece/TrafficBDE

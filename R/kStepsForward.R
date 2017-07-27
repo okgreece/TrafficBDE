@@ -32,7 +32,7 @@ kStepsForward <- function (steps, Link_id, direction, datetime, predict){
   DataLink <- loadDataSpecLink(Link_id, direction, Data)
   
   DataLinkNA <- fillMissingValues(DataLink)
-  DataLinkNA <- na.omit(DataLinkNA)
+  #DataLinkNA <- na.omit(DataLinkNA)
   
   datetime <- as.POSIXct(strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"))
   minutes <- lubridate::minute(datetime)

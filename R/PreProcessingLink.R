@@ -31,10 +31,10 @@
 
 PreProcessingLink <- function(DataList){
   
-  trainData <- as.data.frame(DataList[1])
+  trainData <- as.data.frame(DataList[[1]])
   names(trainData)<- names(DataList[[1]])
   
-  testData <- as.data.frame(DataList[2])
+  testData <- as.data.frame(DataList[[2]])
   names(testData) <- names(DataList[[2]])
   
   trainset <- trainData[,2:ncol(trainData)] 

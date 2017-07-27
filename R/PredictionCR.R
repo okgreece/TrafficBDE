@@ -37,11 +37,10 @@ PredictionCR <- function(List,NNOut,predict){
   
   
   a=as.data.frame(t(unlist(llll)))
-  names(a)=c("Min_speed", "Max_speed", "Mean_speed", 
-             "Stdev_speed", "Skewness_speed", "Kurtosis_speed", "Entries", "UniqueEntries")
+  names(a)=names(testset)
   
   a <- subset(a,select=colnames(a)[which(colnames(a)!=predict)])
-  NNOut.predict = caret::predict(NNOut,a)
+  NNOut.predict = predict(NNOut,a)
   
   Min = List[[3]][names(List[[3]])==predict]
   Max = List[[4]][names(List[[4]])==predict]

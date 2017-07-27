@@ -40,7 +40,14 @@ Simple examples the `kStepsForward` function are provided, in order for the user
 The sample of the dataset that is being used is available in TrafficBDE package and represents the traffic fload of the road with Link_id: "163204843", for January 2017.
 
 The first example provides, in one step, the prediction of the Mean speed at 14.00 on 27 Jan. 2017
-`kStepsForward(1, "163204843", "1", "2017-01-27 14:00:00", "Mean_speed")`
+
+```{r, warning=FALSE}
+library(TrafficBDE)
+kStepsForward(1, "163204843", "1", "2017-01-27 14:00:00", "Mean_speed")
+```
 
 The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017
-`kStepsForward(1, "163204843", "1", "2017-01-15 20:00:00", "Entries")`
+
+```{r, warning=FALSE}
+kStepsForward(1, "163204843", "1", "2017-01-15 20:00:00", "Entries")
+```

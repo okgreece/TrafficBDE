@@ -24,9 +24,10 @@
 loadData <- function(){
   
   #Data <- readr::read_delim("~/imet_Links/fcd_speed_012017.csv", 
-   #                  "\t", escape_double = FALSE, col_names = FALSE, 
+   #                "\t", escape_double = FALSE, col_names = FALSE, 
     #                 trim_ws = TRUE)
-  Data <- read_csv("D:/packages/okgreece/TrafficBDE/sample.csv")
+  Data <- readr::read_csv("D:/packages/okgreece/TrafficBDE/data/sample.csv", 
+                         col_types = cols(X1 = col_skip()))
   
   # Data <- "link"
   Data <- as.data.frame(Data)

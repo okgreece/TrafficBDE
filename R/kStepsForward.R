@@ -4,7 +4,7 @@
 #' @description
 #' This function predictes the wanted value after k steps.
 #' 
-#' @usage lkStepsForward (steps, Link_id, direction, datetime, predict)
+#' @usage kStepsForward (steps, Link_id, direction, datetime, predict)
 #' 
 #' @param steps The number of steps
 #' @param Link_id A character with the id of the road needed
@@ -34,7 +34,7 @@ kStepsForward <- function (steps, Link_id, direction, datetime, predict){
   wd<-setwd(".")
   print(wd);
   
-  DataLink <- try(as.data.frame(read.csv(file.path(wd, "data",
+  DataLink <- try(as.data.frame(utils::read.csv(file.path(wd, "data",
                                   paste(paste(Link_id,direction,sep="_"), ".csv",sep="")), 
                                   header= TRUE, sep = ","),silent=FALSE))
   DataLink <- DataLink[,-1]
@@ -49,7 +49,7 @@ kStepsForward <- function (steps, Link_id, direction, datetime, predict){
                                                           c("Predicted", "Real Value", "RMSE")))
   
   for (i in 1:(steps)){
-    dateSt <- update(datetime , minutes = minutes -15*(steps-i))
+    dateSt <- stats::update(datetime , minutes = minutes -15*(steps-i))
     
     DataAll <- fillMissingDates(DataLinkNA, dateSt)
     

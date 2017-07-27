@@ -39,7 +39,7 @@ TrainCR <-function(List, predict){
   StartTime = Sys.time() 
   
   n = names(trainset)
-  f <- as.formula(paste(predict, paste("~"), paste(n[!n %in% predict], collapse = " + ")))
+  f <- stats::as.formula(paste(predict, paste("~"), paste(n[!n %in% predict], collapse = " + ")))
   
   # training phase
   print("Training...")
@@ -48,7 +48,7 @@ TrainCR <-function(List, predict){
   
   NNOut = caret::train(f, data = trainset,method = "neuralnet", 
                 trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE,
-                na.action = na.exclude)
+                na.action = stats::na.exclude)
   
   
   print("Training Completed.")

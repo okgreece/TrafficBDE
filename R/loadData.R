@@ -14,7 +14,7 @@
 #' @return 
 #' Returns a data frame.
 #' 
-#' @seealso 
+#' @seealso ...
 #'  
 #' @rdname loadData
 #' 

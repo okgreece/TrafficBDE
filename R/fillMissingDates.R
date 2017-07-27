@@ -16,7 +16,7 @@
 #' 
 #' @return A data frame with all the historical data between the first date and the date wanted. 
 #' 
-#' @seealso
+#' @seealso ...
 #' 
 #' @rdname fillMissingDates
 #' 
@@ -35,7 +35,7 @@ fillMissingDates <- function(Data, datetime){
   ts <- seq.POSIXt(as.POSIXlt(min(Data$Date)), as.POSIXlt(datetime), by="15 min")
   ts <- format.POSIXct(ts,'%Y-%m-%d %H:%M:%S')
   
-  df <- data.frame(Date=ts)
+  df$Date <- as.data.frame(ts)
   df$Date <- as.POSIXct(strptime(as.character(df$Date),format='%Y-%m-%d %H:%M:%S', 
                                  tz="Europe/Istanbul"))
   df$Date <- as.POSIXct(df$Date)

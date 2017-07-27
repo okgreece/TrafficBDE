@@ -7,7 +7,7 @@
 #' @usage PredictionCR(List,NNOut,predict)
 #' 
 #' @param List A list with the following components: trainset, testset, MinMaxFromScaling
-#' @param NNout The train model
+#' @param NNOut The train model
 #' @param predict The value to be predicted
 #'  
 #' @details 
@@ -39,7 +39,7 @@ PredictionCR <- function(List,NNOut,predict){
   names(a)=names(testset)
   
   a <- subset(a,select=colnames(a)[which(colnames(a)!=predict)])
-  NNOut.predict = predict(NNOut,a)
+  NNOut.predict = stats::predict(NNOut,a)
   
   Min = List[[3]][names(List[[3]])==predict]
   Max = List[[4]][names(List[[4]])==predict]

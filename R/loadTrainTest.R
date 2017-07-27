@@ -21,7 +21,7 @@
 #' \item testsData The testData to be predict
 #' }
 #'  
-#' @seealso
+#' @seealso ...
 #' 
 #' @rdname loadTrainTest
 #'

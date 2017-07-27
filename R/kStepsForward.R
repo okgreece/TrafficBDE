@@ -27,9 +27,17 @@
 #' @export
 
 kStepsForward <- function (steps, Link_id, direction, datetime, predict){
-  Data <- loadData()
+  #Data <- loadData()
   
-  DataLink <- loadDataSpecLink(Link_id, direction, Data)
+  #DataLink <- loadDataSpecLink(Link_id, direction, Data)
+  setwd(".")
+  wd<-setwd(".")
+  print(wd);
+  
+  DataLink <- try(as.data.frame(read.csv(file.path(wd, "data",
+                                  paste(paste(Link_id,direction,sep="_"), ".csv",sep="")), 
+                                  header= TRUE, sep = ","),silent=FALSE))
+  DataLink <- DataLink[,-1]
   
   DataLinkNA <- fillMissingValues(DataLink)
   #DataLinkNA <- na.omit(DataLinkNA)

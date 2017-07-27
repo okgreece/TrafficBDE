@@ -174,8 +174,194 @@ $(document).ready(function () {
 <h2>Examples</h2>
 <p>Simple examples the <code>kStepsForward</code> function are provided, in order for the user to understand the use and how to deal with these function.</p>
 <p>The sample of the dataset that is being used is available in TrafficBDE package and represents the traffic fload of the road with Link_id: “163204843”, for January 2017.</p>
-<p>The first example provides, in one step, the prediction of the Mean speed at 14.00 on 27 Jan. 2017 <code>kStepsForward(1, &quot;163204843&quot;, &quot;1&quot;, &quot;2017-01-27 14:00:00&quot;, &quot;Mean_speed&quot;)</code></p>
-<p>The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017 <code>kStepsForward(1, &quot;163204843&quot;, &quot;1&quot;, &quot;2017-01-15 20:00:00&quot;, &quot;Entries&quot;)</code></p>
+<p>The first example provides, in one step, the prediction of the Mean speed at 14.00 on 27 Jan. 2017</p>
+<pre class="r"><code>library(TrafficBDE)
+kStepsForward(1, &quot;163204843&quot;, &quot;1&quot;, &quot;2017-01-27 14:00:00&quot;, &quot;Mean_speed&quot;)</code></pre>
+<pre><code>## [1] &quot;Training...&quot;</code></pre>
+<pre><code>## Loading required package: neuralnet</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## + Fold01: layer1=4, layer2=3, layer3=4 
+## - Fold01: layer1=4, layer2=3, layer3=4 
+## + Fold01: layer1=5, layer2=3, layer3=4 
+## - Fold01: layer1=5, layer2=3, layer3=4 
+## + Fold01: layer1=4, layer2=4, layer3=4 
+## - Fold01: layer1=4, layer2=4, layer3=4 
+## + Fold01: layer1=5, layer2=4, layer3=4 
+## - Fold01: layer1=5, layer2=4, layer3=4 
+## + Fold02: layer1=4, layer2=3, layer3=4 
+## - Fold02: layer1=4, layer2=3, layer3=4 
+## + Fold02: layer1=5, layer2=3, layer3=4 
+## - Fold02: layer1=5, layer2=3, layer3=4 
+## + Fold02: layer1=4, layer2=4, layer3=4 
+## - Fold02: layer1=4, layer2=4, layer3=4 
+## + Fold02: layer1=5, layer2=4, layer3=4 
+## - Fold02: layer1=5, layer2=4, layer3=4 
+## + Fold03: layer1=4, layer2=3, layer3=4 
+## - Fold03: layer1=4, layer2=3, layer3=4 
+## + Fold03: layer1=5, layer2=3, layer3=4 
+## - Fold03: layer1=5, layer2=3, layer3=4 
+## + Fold03: layer1=4, layer2=4, layer3=4 
+## - Fold03: layer1=4, layer2=4, layer3=4 
+## + Fold03: layer1=5, layer2=4, layer3=4 
+## - Fold03: layer1=5, layer2=4, layer3=4 
+## + Fold04: layer1=4, layer2=3, layer3=4 
+## - Fold04: layer1=4, layer2=3, layer3=4 
+## + Fold04: layer1=5, layer2=3, layer3=4 
+## - Fold04: layer1=5, layer2=3, layer3=4 
+## + Fold04: layer1=4, layer2=4, layer3=4 
+## - Fold04: layer1=4, layer2=4, layer3=4 
+## + Fold04: layer1=5, layer2=4, layer3=4 
+## - Fold04: layer1=5, layer2=4, layer3=4 
+## + Fold05: layer1=4, layer2=3, layer3=4 
+## - Fold05: layer1=4, layer2=3, layer3=4 
+## + Fold05: layer1=5, layer2=3, layer3=4 
+## - Fold05: layer1=5, layer2=3, layer3=4 
+## + Fold05: layer1=4, layer2=4, layer3=4 
+## - Fold05: layer1=4, layer2=4, layer3=4 
+## + Fold05: layer1=5, layer2=4, layer3=4 
+## - Fold05: layer1=5, layer2=4, layer3=4 
+## + Fold06: layer1=4, layer2=3, layer3=4 
+## - Fold06: layer1=4, layer2=3, layer3=4 
+## + Fold06: layer1=5, layer2=3, layer3=4 
+## - Fold06: layer1=5, layer2=3, layer3=4 
+## + Fold06: layer1=4, layer2=4, layer3=4 
+## - Fold06: layer1=4, layer2=4, layer3=4 
+## + Fold06: layer1=5, layer2=4, layer3=4 
+## - Fold06: layer1=5, layer2=4, layer3=4 
+## + Fold07: layer1=4, layer2=3, layer3=4 
+## - Fold07: layer1=4, layer2=3, layer3=4 
+## + Fold07: layer1=5, layer2=3, layer3=4 
+## - Fold07: layer1=5, layer2=3, layer3=4 
+## + Fold07: layer1=4, layer2=4, layer3=4 
+## - Fold07: layer1=4, layer2=4, layer3=4 
+## + Fold07: layer1=5, layer2=4, layer3=4 
+## - Fold07: layer1=5, layer2=4, layer3=4 
+## + Fold08: layer1=4, layer2=3, layer3=4 
+## - Fold08: layer1=4, layer2=3, layer3=4 
+## + Fold08: layer1=5, layer2=3, layer3=4 
+## - Fold08: layer1=5, layer2=3, layer3=4 
+## + Fold08: layer1=4, layer2=4, layer3=4 
+## - Fold08: layer1=4, layer2=4, layer3=4 
+## + Fold08: layer1=5, layer2=4, layer3=4 
+## - Fold08: layer1=5, layer2=4, layer3=4 
+## + Fold09: layer1=4, layer2=3, layer3=4 
+## - Fold09: layer1=4, layer2=3, layer3=4 
+## + Fold09: layer1=5, layer2=3, layer3=4 
+## - Fold09: layer1=5, layer2=3, layer3=4 
+## + Fold09: layer1=4, layer2=4, layer3=4 
+## - Fold09: layer1=4, layer2=4, layer3=4 
+## + Fold09: layer1=5, layer2=4, layer3=4 
+## - Fold09: layer1=5, layer2=4, layer3=4 
+## + Fold10: layer1=4, layer2=3, layer3=4 
+## - Fold10: layer1=4, layer2=3, layer3=4 
+## + Fold10: layer1=5, layer2=3, layer3=4 
+## - Fold10: layer1=5, layer2=3, layer3=4 
+## + Fold10: layer1=4, layer2=4, layer3=4 
+## - Fold10: layer1=4, layer2=4, layer3=4 
+## + Fold10: layer1=5, layer2=4, layer3=4 
+## - Fold10: layer1=5, layer2=4, layer3=4 
+## Aggregating results
+## Selecting tuning parameters
+## Fitting layer1 = 4, layer2 = 4, layer3 = 4 on full training set
+## [1] &quot;Training Completed.&quot;
+## [1] &quot;Time taken for training:  2.1627551317215 &quot;
+## [1] &quot;Predicting Average Speed for the Next Quarter...&quot;
+## [1] &quot;RMSE error 2.50713481495873 &quot;</code></pre>
+<pre><code>##                       Predicted Real Value        RMSE
+## 2017-01-27 14:00:00 31.50713481         29 2.507134815</code></pre>
+<p>The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017</p>
+<pre class="r"><code>kStepsForward(1, &quot;163204843&quot;, &quot;1&quot;, &quot;2017-01-15 20:00:00&quot;, &quot;Entries&quot;)</code></pre>
+<pre><code>## [1] &quot;Training...&quot;
+## + Fold01: layer1=4, layer2=3, layer3=4 
+## - Fold01: layer1=4, layer2=3, layer3=4 
+## + Fold01: layer1=5, layer2=3, layer3=4 
+## - Fold01: layer1=5, layer2=3, layer3=4 
+## + Fold01: layer1=4, layer2=4, layer3=4 
+## - Fold01: layer1=4, layer2=4, layer3=4 
+## + Fold01: layer1=5, layer2=4, layer3=4 
+## - Fold01: layer1=5, layer2=4, layer3=4 
+## + Fold02: layer1=4, layer2=3, layer3=4 
+## - Fold02: layer1=4, layer2=3, layer3=4 
+## + Fold02: layer1=5, layer2=3, layer3=4 
+## - Fold02: layer1=5, layer2=3, layer3=4 
+## + Fold02: layer1=4, layer2=4, layer3=4 
+## - Fold02: layer1=4, layer2=4, layer3=4 
+## + Fold02: layer1=5, layer2=4, layer3=4 
+## - Fold02: layer1=5, layer2=4, layer3=4 
+## + Fold03: layer1=4, layer2=3, layer3=4 
+## - Fold03: layer1=4, layer2=3, layer3=4 
+## + Fold03: layer1=5, layer2=3, layer3=4 
+## - Fold03: layer1=5, layer2=3, layer3=4 
+## + Fold03: layer1=4, layer2=4, layer3=4 
+## - Fold03: layer1=4, layer2=4, layer3=4 
+## + Fold03: layer1=5, layer2=4, layer3=4 
+## - Fold03: layer1=5, layer2=4, layer3=4 
+## + Fold04: layer1=4, layer2=3, layer3=4 
+## - Fold04: layer1=4, layer2=3, layer3=4 
+## + Fold04: layer1=5, layer2=3, layer3=4 
+## - Fold04: layer1=5, layer2=3, layer3=4 
+## + Fold04: layer1=4, layer2=4, layer3=4 
+## - Fold04: layer1=4, layer2=4, layer3=4 
+## + Fold04: layer1=5, layer2=4, layer3=4 
+## - Fold04: layer1=5, layer2=4, layer3=4 
+## + Fold05: layer1=4, layer2=3, layer3=4 
+## - Fold05: layer1=4, layer2=3, layer3=4 
+## + Fold05: layer1=5, layer2=3, layer3=4 
+## - Fold05: layer1=5, layer2=3, layer3=4 
+## + Fold05: layer1=4, layer2=4, layer3=4 
+## - Fold05: layer1=4, layer2=4, layer3=4 
+## + Fold05: layer1=5, layer2=4, layer3=4 
+## - Fold05: layer1=5, layer2=4, layer3=4 
+## + Fold06: layer1=4, layer2=3, layer3=4 
+## - Fold06: layer1=4, layer2=3, layer3=4 
+## + Fold06: layer1=5, layer2=3, layer3=4 
+## - Fold06: layer1=5, layer2=3, layer3=4 
+## + Fold06: layer1=4, layer2=4, layer3=4 
+## - Fold06: layer1=4, layer2=4, layer3=4 
+## + Fold06: layer1=5, layer2=4, layer3=4 
+## - Fold06: layer1=5, layer2=4, layer3=4 
+## + Fold07: layer1=4, layer2=3, layer3=4 
+## - Fold07: layer1=4, layer2=3, layer3=4 
+## + Fold07: layer1=5, layer2=3, layer3=4 
+## - Fold07: layer1=5, layer2=3, layer3=4 
+## + Fold07: layer1=4, layer2=4, layer3=4 
+## - Fold07: layer1=4, layer2=4, layer3=4 
+## + Fold07: layer1=5, layer2=4, layer3=4 
+## - Fold07: layer1=5, layer2=4, layer3=4 
+## + Fold08: layer1=4, layer2=3, layer3=4 
+## - Fold08: layer1=4, layer2=3, layer3=4 
+## + Fold08: layer1=5, layer2=3, layer3=4 
+## - Fold08: layer1=5, layer2=3, layer3=4 
+## + Fold08: layer1=4, layer2=4, layer3=4 
+## - Fold08: layer1=4, layer2=4, layer3=4 
+## + Fold08: layer1=5, layer2=4, layer3=4 
+## - Fold08: layer1=5, layer2=4, layer3=4 
+## + Fold09: layer1=4, layer2=3, layer3=4 
+## - Fold09: layer1=4, layer2=3, layer3=4 
+## + Fold09: layer1=5, layer2=3, layer3=4 
+## - Fold09: layer1=5, layer2=3, layer3=4 
+## + Fold09: layer1=4, layer2=4, layer3=4 
+## - Fold09: layer1=4, layer2=4, layer3=4 
+## + Fold09: layer1=5, layer2=4, layer3=4 
+## - Fold09: layer1=5, layer2=4, layer3=4 
+## + Fold10: layer1=4, layer2=3, layer3=4 
+## - Fold10: layer1=4, layer2=3, layer3=4 
+## + Fold10: layer1=5, layer2=3, layer3=4 
+## - Fold10: layer1=5, layer2=3, layer3=4 
+## + Fold10: layer1=4, layer2=4, layer3=4 
+## - Fold10: layer1=4, layer2=4, layer3=4 
+## + Fold10: layer1=5, layer2=4, layer3=4 
+## - Fold10: layer1=5, layer2=4, layer3=4 
+## Aggregating results
+## Selecting tuning parameters
+## Fitting layer1 = 4, layer2 = 3, layer3 = 4 on full training set
+## [1] &quot;Training Completed.&quot;
+## [1] &quot;Time taken for training:  11.6388770182927 &quot;
+## [1] &quot;Predicting Average Speed for the Next Quarter...&quot;
+## [1] &quot;RMSE error 0.00817098942766492 &quot;</code></pre>
+<pre><code>##                       Predicted Real Value           RMSE
+## 2017-01-15 20:00:00 1.008170989          1 0.008170989428</code></pre>
 </div>
 </div>
 

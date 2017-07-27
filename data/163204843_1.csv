@@ -1,4 +1,4 @@
-"","Link_id","Direction","Date","Min_speed","Max_speed","Mean_speed","Stdev_speed","Skewness_speed","Kurtosis_speed","Entries","UniqueEntries"
+"X","Link_id","Direction","Date","Min_speed","Max_speed","Mean_speed","Stdev_speed","Skewness_speed","Kurtosis_speed","Entries","UniqueEntries"
 "89615",163204843,1,2017-01-01 22:15:00,13,13,13,NA,NA,NA,1,1
 "94796",163204843,1,2017-01-01 23:30:00,37,37,37,NA,NA,NA,1,1
 "131947",163204843,1,2017-01-02 10:30:00,26,26,26,NA,NA,NA,1,1

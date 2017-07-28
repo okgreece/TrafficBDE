@@ -4,6 +4,16 @@ Title: Traffic predictions using
 Version: 0.0.0.9000
 Date: 2017-06-30
 Description: TrafficBDE is a package developed for TrafficBDE datasets, to predict and return the wanted variable. It enables the creation of a neural network model, it trains the model in order to provide the most acccurate prediction. This package includes functions for appropriately shaping the data.
+Author@R: c(person("Aikaterini", "Chatzopoulou", role = c("aut", "cre"),
+                     email = "kchatzopoul@okfn.gr"),
+              person("Kleanthis", "Koupidis", role = "aut",
+                     email ="koupidis@okfn.gr"),
+              person("Charalampos","Bratsas", role = "aut"
+                      email = "charalampos.bratsas@okfn.org"),
+              person("Panagiotis", "Tzenos", role = "dtc",
+                     email = "ptzenos@certh.gr"),
+              person("Josep Maria", "Salanova", role = "dtc",
+                     email = "jose@certh.gr"))
 Author: Aikaterini Chatzopoulou <kchatzopoul@okfn.gr>, Kleanthis Koupidis <koupidis@okfn.gr>, Charalampos Bratsas <charalampos.bratsas@okfn.org>
 Maintainer: Aikaterini Chatzopoulou <kchatzopoul@okfn.gr>
 URL: https://github.com/okgreece/TrafficBDE

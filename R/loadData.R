@@ -5,6 +5,8 @@
 #' This function loads the traffic data.
 #' 
 #' @usage loadData(path)
+#' 
+#' @param path The path where the data are.
 #'  
 #' @details 
 #' This function returns a data frame with the traffic data of the roads of Thessaloniki ordered by the roads.
@@ -14,7 +16,6 @@
 #' @return 
 #' Returns a data frame.
 #' 
-#'  
 #' @rdname loadData
 #' 
 #' @importFrom RCurl url.exists

@@ -15,7 +15,7 @@
 #' 
 #' @return A data frame with all the historical data without missing values
 #' 
-#' @seealso ...
+#' @seealso \code{\link{loadData}}
 #' 
 #' @rdname fillMissingValues
 #' 

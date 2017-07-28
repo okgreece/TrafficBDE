@@ -16,7 +16,7 @@
 #' 
 #' @return A data frame with all the historical data between the first date and the date wanted. 
 #' 
-#' @seealso ...
+#' @seealso \code{\link{loadData}}, \code{\link{fillMissingValues}}
 #' 
 #' @rdname fillMissingDates
 #' 

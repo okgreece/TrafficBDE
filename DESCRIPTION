@@ -14,7 +14,11 @@ Author@R: c(person("Aikaterini", "Chatzopoulou", role = c("aut", "cre"),
                      email = "ptzenos@certh.gr"),
               person("Josep Maria", "Salanova", role = "dtc",
                      email = "jose@certh.gr"))
-Author: Aikaterini Chatzopoulou <kchatzopoul@okfn.gr>, Kleanthis Koupidis <koupidis@okfn.gr>, Charalampos Bratsas <charalampos.bratsas@okfn.org>
+Author: Aikaterini Chatzopoulou [aut, cre], 
+        Kleanthis Koupidis [aut], 
+        Charalampos Bratsas [aut],
+        Panagiotis Tzenos [dtc],
+        Josep Maria Salanova [dtc]
 Maintainer: Aikaterini Chatzopoulou <kchatzopoul@okfn.gr>
 URL: https://github.com/okgreece/TrafficBDE
 BugReports: https://github.com/okgreece/TrafficBDE/issues

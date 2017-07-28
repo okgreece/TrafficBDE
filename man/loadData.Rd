@@ -6,6 +6,9 @@
 \usage{
 loadData(path)
 }
+\arguments{
+\item{path}{The path where the data are.}
+}
 \value{
 Returns a data frame.
 }

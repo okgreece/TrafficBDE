@@ -42,7 +42,7 @@ kStepsForward <- function (Data, Link_id, direction, datetime, predict, steps){
   for (i in 1:(steps)){
     dateSt <- stats::update(datetime , minutes = minutes -15*(steps-i))
     
-    DataAll <- fillMissingDates(DataLinkNA, datetime)
+    DataAll <- fillMissingDates(DataLinkNA, dateSt)
     
     DataList <- loadTrainTest(DataAll, dateSt, predict)
     

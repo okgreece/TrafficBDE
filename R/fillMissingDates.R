@@ -46,13 +46,15 @@ fillMissingDates <- function(Data, datetime){
   data_with_missing_times <- dplyr::full_join(df,Data, by="Date")
   data_with_missing_times <- data_with_missing_times[,-c(2,3)]
   
-  z <- zoo::read.zoo(data_with_missing_times, tz = "Europe/Istanbul", format = '%Y-%m-%d %H:%M:%S')
-  z <- zoo::na.approx(z)
-  z <- as.data.frame(z)
+  #z <- zoo::read.zoo(data_with_missing_times, tz = "Europe/Istanbul", format = '%Y-%m-%d %H:%M:%S')
+  #z <- zoo::na.approx(z)
+  #z <- as.data.frame(z)
+  z <- zoo::na.locf(data_with_missing_times)
   
-  data_with_missing_times <- data.frame(as.character(rownames(z)),z)
-  rownames(data_with_missing_times) <- NULL
-  colnames(data_with_missing_times) <- c("Date",colnames(z))
+  #data_with_missing_times <- data.frame(as.character(rownames(z)),z)
+  #rownames(data_with_missing_times) <- NULL
+  data_with_missing_times <- z
+  colnames(data_with_missing_times) <- colnames(z)
   
   days <- lubridate::days(14)
   twoweeks <- datetime - days

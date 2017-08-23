@@ -21,7 +21,7 @@ This function fills the missing dates from the data.
 This function returns a data frame without missing dates.
 }
 \seealso{
-...
+\code{\link{loadData}}, \code{\link{fillMissingValues}}
 }
 \author{
 Aikaterini Chatzopoulou

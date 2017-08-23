@@ -65,17 +65,17 @@ Simple examples the `kStepsForward` function are provided, in order for the user
 
 The sample of the dataset that is being used is available in TrafficBDE package and represents the traffic fload of the road with Link\_id: "163204843", for January 2017.
 
+For another data set to be load run the function `loadData(path)` instead of the lines 74-75.
+
 The first example provides, in one step, the prediction of the Mean speed at 14.00 on 27 Jan. 2017
 
 ``` r
 library(TrafficBDE)
-kStepsForward(
-  steps = 1,
-  Link_id = "163204843",
-  direction = "1",
-  datetime = "2017-01-27 14:00:00",
-  predict = "Mean_speed"
-  )
+Data <- data.table::fread("D:/packages/okgreece/TrafficBDE/data/163204843_1.csv")
+Data <- as.data.frame(Data[,-1])
+
+
+kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-27 14:00:00", predict = "Mean_speed", steps = 1)
 ```
 
     ## [1] "C:/Users/Kleanthis-Okf/Documents/TrafficBDE"
@@ -181,13 +181,7 @@ kStepsForward(
 The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017
 
 ``` r
-kStepsForward(
-  steps = 1,
-  Link_id = "163204843",
-  direction = "1",
-  datetime = "2017-01-15 20:00:00",
-  predict = "Entries"
-  )
+kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-15 20:00:00", predict = "Entries", steps = 1)
 ```
 
     ## [1] "C:/Users/Kleanthis-Okf/Documents/TrafficBDE"

@@ -24,7 +24,7 @@
 #' @export
 
 PredictionCR <- function(List,NNOut,predict){
-  print("Predicting Average Speed for the Next Quarter...")
+  cat("\nPredicting",predict,"for the Next Quarter...\n")
   # Prediction phase
   Min = List[[3]]
   Max = List[[4]]
@@ -51,7 +51,6 @@ PredictionCR <- function(List,NNOut,predict){
   NNOut.predict = as.data.frame(NNOut.predict)
   
   RMSE <- sqrt(mean((Observations - Predictions)^2))
-  print(paste("RMSE error",RMSE,""))
   
   result = as.numeric(c(Predictions,
                       Observations,

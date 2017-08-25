@@ -42,7 +42,7 @@ TrainCR <-function(List, predict){
   f <- stats::as.formula(paste(predict, paste("~"), paste(n[!n %in% predict], collapse = " + ")))
   
   # training phase
-  print("Training...")
+  cat("Training...\n")
   fitControl = caret::trainControl(method = "cv",verboseIter = T,seeds = mySeeds) 
   NNgrid = expand.grid(layer1 = c(4,5),layer2 = c(3,4),layer3 = c(4))
   
@@ -51,11 +51,11 @@ TrainCR <-function(List, predict){
                 na.action = stats::na.exclude)
   
   
-  print("Training Completed.")
+  cat("Training Completed.\n")
   
   EndTime = Sys.time()
   TimeTaken = EndTime - StartTime
-  print(paste("Time taken for training: ",TimeTaken,""))
+  cat("\nTime taken for training: ",TimeTaken)
   
   return(NNOut)
 }

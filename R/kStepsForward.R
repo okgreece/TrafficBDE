@@ -29,6 +29,9 @@
 
 kStepsForward <- function (Data, Link_id, direction, datetime, predict, steps){
   
+  if ((predict %in% c("Mean_speed","Entries","Stdev_speed"))== F)
+  {stop("Please specify another parameter\n",predict," is not an appropriate value")}
+  
   DataLink <- loadDataSpecLink(Link_id, direction, Data)
   
   DataLinkNA <- fillMissingValues(DataLink)

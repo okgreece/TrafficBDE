@@ -10,12 +10,20 @@ Intoduction
 
 This package was created in order to enable the creation of a neural network model, for the needs of a European project. “TrafficBDE” includes functions for properly formulating the data, training the neural network and predicted the wanted variable. This document introduces you to TrafficBDE's basic set of tools.
 
-The user should use only the `kStepsForward` function.
+The user should use only the `loadData` and the `kStepsForward` functions. The first one to load the historical data and the second for the computation of the predicted value.
+
+Install Package
+===============
+
+In order to install TrafficBDE, you should use the following code.
+
+    install.packages("devtools")
+    devtools::install_github("okgreece/TrafficBDE")
 
 Input
 -----
 
-The input dataset of the main function is an excel file. There are different parameters that a user could specify and interact with the results. The parameters: “steps”, “predict” and “Link\_id” should be defined by the user, to form the dataset. Then an automated process formulates the data in order to provide the prediction of the wanted variable for the desired time and road.
+The input dataset of the main function could be a link, a csv, an excel file. There are different parameters that a user could specify and interact with the results. The parameters: "path", "Link\_id", "direction", "datetime", "predict" and "steps" should be defined by the user, to form the dataset. Then an automated process formulates the data in order to provide the prediction of the wanted variable for the desired time and road.
 
 <table>
 <caption>A sort description about the inputs.</caption>
@@ -31,8 +39,8 @@ The input dataset of the main function is an excel file. There are different par
 </thead>
 <tbody>
 <tr class="odd">
-<td><p>steps</p></td>
-<td><p>How many steps forward the prediction will be</p></td>
+<td><p>path</p></td>
+<td><p>The path containing the historical data</p></td>
 </tr>
 <tr class="even">
 <td><p>Link_id</p></td>
@@ -48,7 +56,11 @@ The input dataset of the main function is an excel file. There are different par
 </tr>
 <tr class="odd">
 <td><p>predict</p></td>
-<td><p>The argument to be predicted</p></td>
+<td><p>The argument to be predicted, appropriate values: &quot;Mean_speed&quot;, &quot;Entries&quot;, &quot;Stdev_speed&quot;</p></td>
+</tr>
+<tr class="even">
+<td><p>steps</p></td>
+<td><p>How many steps forward the prediction will be</p></td>
 </tr>
 </tbody>
 </table>
@@ -78,7 +90,6 @@ Data <- as.data.frame(Data[,-1])
 kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-27 14:00:00", predict = "Mean_speed", steps = 1)
 ```
 
-    ## [1] "C:/Users/Kleanthis-Okf/Documents/TrafficBDE"
     ## [1] "Training..."
 
     ## Loading required package: neuralnet
@@ -171,20 +182,15 @@ kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2
     ## Selecting tuning parameters
     ## Fitting layer1 = 4, layer2 = 4, layer3 = 4 on full training set
     ## [1] "Training Completed."
-    ## [1] "Time taken for training:  1.61313921610514 "
+    ## [1] "Time taken for training:  2.70883105198542 "
     ## [1] "Predicting Average Speed for the Next Quarter..."
-    ## [1] "RMSE error 2.50713481495902 "
+    ## [1] "RMSE error 10.3615078681489 "
 
     ##                       Predicted Real Value        RMSE
-    ## 2017-01-27 14:00:00 31.50713481         29 2.507134815
+    ## 2017-01-27 14:00:00 39.36150787         29 10.36150787
 
 The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017
 
-``` r
-kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-15 20:00:00", predict = "Entries", steps = 1)
-```
-
-    ## [1] "C:/Users/Kleanthis-Okf/Documents/TrafficBDE"
     ## [1] "Training..."
     ## + Fold01: layer1=4, layer2=3, layer3=4 
     ## - Fold01: layer1=4, layer2=3, layer3=4 
@@ -268,14 +274,14 @@ kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2
     ## - Fold10: layer1=5, layer2=4, layer3=4 
     ## Aggregating results
     ## Selecting tuning parameters
-    ## Fitting layer1 = 4, layer2 = 3, layer3 = 4 on full training set
+    ## Fitting layer1 = 5, layer2 = 4, layer3 = 4 on full training set
     ## [1] "Training Completed."
-    ## [1] "Time taken for training:  8.76996994813283 "
+    ## [1] "Time taken for training:  1.62528608242671 "
     ## [1] "Predicting Average Speed for the Next Quarter..."
-    ## [1] "RMSE error 0.00817098942767736 "
+    ## [1] "RMSE error 0.0110939034959423 "
 
-    ##                       Predicted Real Value           RMSE
-    ## 2017-01-15 20:00:00 1.008170989          1 0.008170989428
+    ##                       Predicted Real Value         RMSE
+    ## 2017-01-15 20:00:00 1.011093903          1 0.0110939035
 
 Github:
 =======

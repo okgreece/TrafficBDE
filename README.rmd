@@ -26,6 +26,15 @@ This package was created in order to enable the creation of a neural network mod
 
 The user should use only the `loadData` and the `kStepsForward` functions. The first one to load the historical data and the second for the computation of the predicted value.
 
+# Install Package
+
+In order to install TrafficBDE, you should use the following code.
+
+```
+install.packages("devtools")
+devtools::install_github("okgreece/TrafficBDE")
+```
+
 ## Input
 
 The input dataset of the main function could be a link, a csv, an excel file. There are different parameters that a user could specify and interact with the results. The parameters: "path", "Link_id", "direction", "datetime", "predict" and "steps" should be defined by the user, to form the dataset. Then an automated process formulates the data in order to provide the prediction of the wanted variable for the desired time and road.
@@ -41,7 +50,7 @@ The input dataset of the main function could be a link, a csv, an excel file. Th
 +-------------+--------------------------------------------------------------------------------------------+
 | datetime    | The date time for the pediction. The format of the datetime should be '%Y-%m-%d %H:%M:%S'  |
 +-------------+--------------------------------------------------------------------------------------------+
-| predict     | The argument to be predicted                                                               |
+| predict     | The argument to be predicted, appropriate values: "Mean_speed", "Entries", "Stdev_speed"   |
 +-------------+--------------------------------------------------------------------------------------------+
 | steps       | How many steps forward the prediction will be                                              |
 +-------------+--------------------------------------------------------------------------------------------+
@@ -56,7 +65,7 @@ Simple examples the `kStepsForward` function are provided, in order for the user
 
 The sample of the dataset that is being used is available in TrafficBDE package and represents the traffic fload of the road with Link_id: "163204843", for January 2017.
 
-For another data set to be load run the function `loadData(path)` instead of the lines 65-66.
+For another data set to be load run the function `loadData(path)` instead of the lines 74-75.
 
 The first example provides, in one step, the prediction of the Mean speed at 14.00 on 27 Jan. 2017
 

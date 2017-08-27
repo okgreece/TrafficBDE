@@ -51,7 +51,27 @@ kStepsForward <- function (Data, Link_id, direction, datetime, predict, steps){
     
     List <- PreProcessingLink(DataList)
     
-    NNOut <- TrainCR(List, predict)
+     # Load model for current link (if exists)
+    print("Trying to load model...")  
+    
+    NNOut <- try(readRDS(file.path("models",paste("model_",Link_id,"_",direction,"_",predict,"_",i,".rds",sep=""))),silent = TRUE)
+    
+    if (class(NNOut) == "try-warning" || class(NNOut) == "try-error") {
+      print("Could not find model. Will create it now...")  
+      NNOut <- TrainCR(List, predict)    
+      print("Saving model...")      
+      # Throws error if cannot save model
+      savNNOut <- try(saveRDS(NNOut,file.path("models",paste("model_",Link_id,"_",direction,"_",predict,"_",i,".rds",sep=""))), silent=TRUE)    
+      if (class(savNNOut) == "try-warning" || class(savNNOut) == "try-error") {
+        print("Could not save model.")  
+      }    
+      else{
+        print("OK")  
+      }      
+    }
+    else{
+      print("OK");
+    }
     
     
     Result[i,] <- PredictionCR(List,NNOut,predict)

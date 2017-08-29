@@ -16,7 +16,7 @@
 #' @details 
 #' This function returns the predicted value after k steps.
 #' 
-#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis, Panagiotis Tzenos
 #' 
 #' @return The predicted value
 #' 
@@ -39,10 +39,11 @@ kStepsForward <- function (Data, Link_id, direction, datetime, predict, steps){
   datetime <- as.POSIXct(strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"))
   minutes <- lubridate::minute(datetime)
   
-  Result = matrix(nrow = steps , ncol = 3,dimnames = list(c(1:steps),
-                                                          c("Predicted", "Real Value", "RMSE")))
+  Result = matrix(nrow = steps , ncol = 6,dimnames = list(c(1:steps),c("Link_id","direction","exec","step","dt",predict)))
   
-  for (i in 1:(steps)){
+  exec_tstamp <-Sys.time();
+  
+    for (i in 1:(steps)){
     dateSt <- stats::update(datetime , minutes = minutes -15*(steps-i))
     
     DataAll <- fillMissingDates(DataLinkNA, dateSt)
@@ -51,35 +52,17 @@ kStepsForward <- function (Data, Link_id, direction, datetime, predict, steps){
     
     List <- PreProcessingLink(DataList)
     
-     # Load model for current link (if exists)
-    print("Trying to load model...")  
-    
-    NNOut <- try(readRDS(file.path("models",paste("model_",Link_id,"_",direction,"_",predict,"_",i,".rds",sep=""))),silent = TRUE)
-    
-    if (class(NNOut) == "try-warning" || class(NNOut) == "try-error") {
-      print("Could not find model. Will create it now...")  
+    #do not retrain on step change
+    if (i==1){
       NNOut <- TrainCR(List, predict)    
-      print("Saving model...")      
-      # Throws error if cannot save model
-      savNNOut <- try(saveRDS(NNOut,file.path("models",paste("model_",Link_id,"_",direction,"_",predict,"_",i,".rds",sep=""))), silent=TRUE)    
-      if (class(savNNOut) == "try-warning" || class(savNNOut) == "try-error") {
-        print("Could not save model.")  
-      }    
-      else{
-        print("OK")  
-      }      
-    }
-    else{
-      print("OK");
     }
     
+    res <- PredictionCR(List,NNOut,predict)
     
-    Result[i,] <- PredictionCR(List,NNOut,predict)
+    Result[i,] <- c(Link_id,direction,as.character(exec_tstamp),i,as.character(dateSt),res[1])
     
-    rownames(Result)[i] <- as.character(dateSt)
-    
-    DataLinkNA[which(DataLinkNA$Date == dateSt),which(colnames(DataLinkNA)==predict)] = Result[i,1] #next step
-    
+    DataLinkNA[which(DataLinkNA$Date == dateSt),which(colnames(DataLinkNA)==predict)] = Result[i,6] #next step
   }
+  
   return(Result)
 }

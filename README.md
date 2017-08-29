@@ -18,7 +18,7 @@ Install Package
 In order to install TrafficBDE, you should use the following code.
 
     install.packages("devtools")
-    devtools::install_github("okgreece/TrafficBDE")
+    devtools::install(".")
 
 Input
 -----
@@ -83,7 +83,7 @@ The first example provides, in one step, the prediction of the Mean speed at 14.
 
 ``` r
 library(TrafficBDE)
-Data <- data.table::fread("D:/packages/okgreece/TrafficBDE/data/163204843_1.csv")
+Data <- data.table::fread("data/163204843_1.csv")
 Data <- as.data.frame(Data[,-1])
 
 

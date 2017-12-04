@@ -71,9 +71,7 @@ The first example provides, in one step, the prediction of the Mean speed at 14.
 
 ```{r, warning=FALSE}
 library(TrafficBDE)
-Data <- data.table::fread("D:/packages/okgreece/TrafficBDE/data/163204843_1.csv")
-Data <- as.data.frame(Data[,-1])
-
+Data <- loadData("D:/packages/okgreece/TrafficBDE/data/163204843_1.csv")
 
 kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-27 14:00:00", predict = "Mean_speed", steps = 1)
 ```

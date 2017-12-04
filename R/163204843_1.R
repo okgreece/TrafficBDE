@@ -3,7 +3,6 @@
 #' @description 
 #' Sample data of the traffic data of the road with Lik id "163204843" and direction = "1"
 #' \itemize{
-#'   \item The record number of the initial data
 #'   \item The Link id of the road
 #'   \item The direction of the road
 #'   \item The date and time of the recorded arguments

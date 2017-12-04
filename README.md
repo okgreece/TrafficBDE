@@ -81,14 +81,12 @@ The first example provides, in one step, the prediction of the Mean speed at 14.
 
 ``` r
 library(TrafficBDE)
-Data <- loadData("D:/packages/okgreece/TrafficBDE/data/163204843_1.csv")
+Data <- loadData("D:/packages/okgreece/TrafficBDE/data/163204843_1.RData")
 
 kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-27 14:00:00", predict = "Mean_speed", steps = 1)
 ```
 
-    ## [1] "Training..."
-
-    ## Loading required package: neuralnet
+    ## Training...
 
     ## Loading required package: lattice
 
@@ -177,17 +175,17 @@ kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2
     ## Aggregating results
     ## Selecting tuning parameters
     ## Fitting layer1 = 4, layer2 = 4, layer3 = 4 on full training set
-    ## [1] "Training Completed."
-    ## [1] "Time taken for training:  2.70883105198542 "
-    ## [1] "Predicting Average Speed for the Next Quarter..."
-    ## [1] "RMSE error 10.3615078681489 "
+    ## Training Completed.
+    ## 
+    ## Time taken for training:  2.446176867
+    ## Predicting Mean_speed for the Next Quarter...
 
     ##                       Predicted Real Value        RMSE
     ## 2017-01-27 14:00:00 39.36150787         29 10.36150787
 
 The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017
 
-    ## [1] "Training..."
+    ## Training...
     ## + Fold01: layer1=4, layer2=3, layer3=4 
     ## - Fold01: layer1=4, layer2=3, layer3=4 
     ## + Fold01: layer1=5, layer2=3, layer3=4 
@@ -270,14 +268,14 @@ The second example provides, in one step, the prediction of the Entries at 20.00
     ## - Fold10: layer1=5, layer2=4, layer3=4 
     ## Aggregating results
     ## Selecting tuning parameters
-    ## Fitting layer1 = 5, layer2 = 4, layer3 = 4 on full training set
-    ## [1] "Training Completed."
-    ## [1] "Time taken for training:  1.62528608242671 "
-    ## [1] "Predicting Average Speed for the Next Quarter..."
-    ## [1] "RMSE error 0.0110939034959423 "
+    ## Fitting layer1 = 4, layer2 = 3, layer3 = 4 on full training set
+    ## Training Completed.
+    ## 
+    ## Time taken for training:  1.870402149
+    ## Predicting Entries for the Next Quarter...
 
-    ##                       Predicted Real Value         RMSE
-    ## 2017-01-15 20:00:00 1.011093903          1 0.0110939035
+    ##                       Predicted Real Value          RMSE
+    ## 2017-01-15 20:00:00 1.012088733          1 0.01208873324
 
 Github:
 =======

@@ -1,16 +1,16 @@
-TrafficBDE 0.2.0
+TrafficBDE 0.0.2
 ============================
 Upload data file.
 Changes in fillMissingDates function.
 Rename Train function, to TrainCR.
 
 
-TrafficBDE 0.1.0
+TrafficBDE 0.0.1
 ============================
 Two new functions were created: Train, crossValidation.
 Functions' input changes.
 
 
-TrafficBDE 0.0.900
+TrafficBDE 0.0.0.900
 ============================
 First version of the library.

@@ -65,8 +65,6 @@ Simple examples the `kStepsForward` function are provided, in order for the user
 
 The sample of the dataset that is being used is available in TrafficBDE package and represents the traffic fload of the road with Link_id: "163204843", for January 2017.
 
-For another data set to be load run the function `loadData(path)` instead of the lines 74-75.
-
 The first example provides, in one step, the prediction of the Mean speed at 14.00 on 27 Jan. 2017
 
 ```{r, warning=FALSE}

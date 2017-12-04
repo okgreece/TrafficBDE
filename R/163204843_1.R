@@ -16,7 +16,7 @@
 #'   \item The unique entries each time
 #'   }
 #' 
-#' @format A csv file
+#' @format RData file
 #' @name 163204843_1
 #' @source TrafficBDE
 #' 

@@ -1,2 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^NEWS\.rmd$
+^NEWS\.html$
+^.travis\.yml$
+^HIT_logo_Full_en\.png$
+^big-data-europe\.png$
+^okfgr\.png$
+^README\.rmd$

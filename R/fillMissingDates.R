@@ -27,6 +27,7 @@
 #' @export
 
 fillMissingDates <- function(Data, datetime){
+  stopifnot(any(colnames(Data)=="Date"))
   
   datetime <- strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul")
   Data$Date <- as.POSIXct(strptime(Data$Date,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"))
@@ -40,7 +41,7 @@ fillMissingDates <- function(Data, datetime){
   df$Date <- as.POSIXct(strptime(as.character(df$Date),format='%Y-%m-%d %H:%M:%S', 
                                  tz="Europe/Istanbul"))
   df$Date <- as.POSIXct(df$Date)
-  Data <- subset(Data, Date <= datetime)
+  Data = Data[Data$Date <= datetime,]
   Data$Date <- as.POSIXct(Data$Date)
   
   data_with_missing_times <- dplyr::full_join(df,Data, by="Date")
@@ -65,7 +66,7 @@ fillMissingDates <- function(Data, datetime){
     minDate <- twoweeks
   }else{minDate <- min(data_with_missing_times$Date)}
   
-  data_with_missing_times <- subset(data_with_missing_times, Date >= minDate)
+  data_with_missing_times <- subset(data_with_missing_times, data_with_missing_times$Date >= minDate)
   
   return(data_with_missing_times)
 }

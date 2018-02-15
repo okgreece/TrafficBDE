@@ -3,7 +3,7 @@ Type: Package
 Title: Traffic predictions using 
 Version: 0.1.0
 Date: 2017-06-30
-Description: TrafficBDE is a package developed for TrafficBDE datasets, to predict and return the wanted variable. It enables the creation of a neural network model, it trains the model in order to provide the most acccurate prediction. This package includes functions for appropriately shaping the data.
+Description: Estimates and return either the traffic speed or the entries for the 'BigDataEurope' <https://www.big-data-europe.eu/> datasetes. Predicts the traffic flow in Traffic data of cities across Europe, according to the 'BigDataEurope' data model. There are functions for processing the data, training a neural network and predicted the wanted variable for a given dataset of the input 'BigDataEurope' datasets.
 Author@R: c(person("Aikaterini", "Chatzopoulou", role = c("aut", "cre"),
                      email = "kchatzopoul@okfn.gr"),
               person("Kleanthis", "Koupidis", role = "aut",
@@ -25,7 +25,7 @@ BugReports: https://github.com/okgreece/TrafficBDE/issues
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: caret, data.table, dplyr, lubridate, neuralnet, RCurl, stats, zoo
+Imports: caret, data.table, dplyr, lubridate, RCurl, stats, zoo
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown

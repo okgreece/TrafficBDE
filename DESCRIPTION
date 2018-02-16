@@ -3,7 +3,7 @@ Type: Package
 Title: Traffic predictions using 
 Version: 0.1.0
 Date: 2017-06-30
-Description: Estimates and return either the traffic speed or the entries for the 'BigDataEurope' <https://www.big-data-europe.eu/> datasetes. Predicts the traffic flow in Traffic data of cities across Europe, according to the 'BigDataEurope' data model. There are functions for processing the data, training a neural network and predicted the wanted variable for a given dataset of the input 'BigDataEurope' datasets.
+Description: Estimate and return either the traffic speed or the car entries in the city of Thessaloniki using historical traffic data. It's used in transport pilot <http://trafficstatusprediction.imet.gr/> of the 'BigDataEurope' project <https://www.big-data-europe.eu/>. There are functions for processing these data, training a neural network, select the most appropriate model and predict the traffic speed or the car entries for a selected time date.
 Author@R: c(person("Aikaterini", "Chatzopoulou", role = c("aut", "cre"),
                      email = "kchatzopoul@okfn.gr"),
               person("Kleanthis", "Koupidis", role = "aut",

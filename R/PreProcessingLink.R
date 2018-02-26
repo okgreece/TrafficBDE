@@ -23,8 +23,6 @@
 #' \item Maximum The max values of each column of the initial dataset
 #' }
 #' 
-#' @seealso ...
-#' 
 #' @rdname PreProcessingLink
 #' 
 #' @export

@@ -26,9 +26,6 @@ This function returns a list with the train and test data.
 \details{
 This function returns a list with the train and test data that will be used for train and prediction.
 }
-\seealso{
-...
-}
 \author{
 Aikaterini Chatzopoulou, Kleanthis Koupidis
 }

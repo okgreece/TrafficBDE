@@ -1,11 +1,14 @@
 ---
-title: "TrafficBDE"
+title: "Getting started with TrafficBDE"
 author: "Aikaterini Chatzopoulou, Kleanthis Koupidis, Charalampos Bratsas"
-date: "26 Ιουλίου 2017"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with 'TrafficBDE'}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-# Intoduction
+# Introduction
 
 This package was created in order to enable the creation of a neural network model, for the needs of a European project. “TrafficBDE” includes functions for properly formulating the data, training the neural network and predicted the wanted variable. This document introduces you to TrafficBDE's basic set of tools.
 
@@ -50,17 +53,19 @@ Simple examples the `kStepsForward` function are provided, in order for the user
 
 The sample of the dataset that is being used is available in TrafficBDE package and represents the traffic fload of the road with Link_id: "163204843", for January 2017.
 
-The first example provides, in one step, the prediction of the Mean speed at 14.00 on 27 Jan. 2017
+The first example provides, in one step, the prediction of the Mean speed at 14:00 on 27 Jan. 2017
 
 ```{r, warning=FALSE}
 library(TrafficBDE)
 Data <- X163204843_1
+```
 
+```{r, include=TRUE,eval=FALSE, warning=FALSE}
 kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-27 14:00:00", predict = "Mean_speed", steps = 1)
 ```
 
-The second example provides, in one step, the prediction of the Entries at 20.00 on 15 Jan. 2017
+The second example provides, in one step, the prediction of the Entries at 20:00 on 15 Jan. 2017
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, eval=FALSE, include=TRUE, message=FALSE, warning=FALSE}
 kStepsForward(Data = Data, Link_id = "163204843", direction = "1", datetime = "2017-01-15 20:00:00", predict = "Entries", steps = 1)
 ```

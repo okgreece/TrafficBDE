@@ -13,13 +13,24 @@
 #' @details 
 #' This function returns the predicted average speed.
 #' 
-#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis, Charalampos Bratsas
 #' 
 #' @return The predicted average speed of the road
 #' 
 #' @seealso \code{\link{PreProcessingLink}}, \code{\link{TrainCR}}
 #' 
 #' @rdname PredictionCR
+#' 
+#' @examples 
+#' \dontrun{
+#' SpecLink <- loadDataSpecLink("163204843","1", X163204843_1)
+#' x <- fillMissingValues(SpecLink)
+#' datetime <- "2017-01-27 14:00:00" 
+#' newData <- fillMissingDates (x, datetime)
+#' DataList <- loadTrainTest (newData, datetime, "Mean_speed")
+#' List <- PreProcessingLink(DataList)
+#' NNOut <- TrainCR (List,"Mean_speed")
+#' predicted <- PredictionCR(List,NNOut,"Mean_speed")}
 #' 
 #' @export
 
@@ -28,7 +39,7 @@ PredictionCR <- function(List,NNOut,predict){
   # Prediction phase
   Min = List[[3]]
   Max = List[[4]]
-
+  
   testset = List[[2]]
   
   llll=list()
@@ -45,16 +56,16 @@ PredictionCR <- function(List,NNOut,predict){
   Max = List[[4]][names(List[[4]])==predict]
   # Denormalize values and calculate the RMSE
   Predictions = NNOut.predict*(Max - Min) + Min
-
+  
   Observations = testset[,which(colnames(testset)==predict)]
-
+  
   NNOut.predict = as.data.frame(NNOut.predict)
   
   RMSE <- sqrt(mean((Observations - Predictions)^2))
   
   result = as.numeric(c(Predictions,
-                      Observations,
-                      RMSE))
+                        Observations,
+                        RMSE))
   
   return(result)
 }

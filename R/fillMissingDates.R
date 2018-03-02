@@ -12,13 +12,19 @@
 #' @details 
 #' This function returns a data frame without missing dates.
 #' 
-#' @author Aikaterini Chatzopoulou
+#' @author Aikaterini Chatzopoulou, Charalampos Bratsas
 #' 
 #' @return A data frame with all the historical data between the first date and the date wanted. 
 #' 
 #' @seealso \code{\link{loadData}}, \code{\link{fillMissingValues}}
 #' 
 #' @rdname fillMissingDates
+#' 
+#' @examples 
+#' SpecLink <- loadDataSpecLink("163204843","1", X163204843_1)
+#' x <- fillMissingValues(SpecLink)
+#' datetime <- "2017-01-27 14:00:00" 
+#' newData <- fillMissingDates (x, datetime)
 #' 
 #' @importFrom  dplyr full_join
 #' @import zoo

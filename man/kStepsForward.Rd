@@ -28,9 +28,14 @@ This function predictes the wanted value after k steps.
 \details{
 This function returns the predicted value after k steps.
 }
+\examples{
+\dontrun{
+kStepsForward (X163204843_1, "163204843", "1", "2017-01-27 14:00:00", "Mean_speed", 1)}
+
+}
 \seealso{
 \code{\link{loadData}}
 }
 \author{
-Aikaterini Chatzopoulou, Kleanthis Koupidis
+Aikaterini Chatzopoulou, Kleanthis Koupidis, Charalampos Bratsas
 }

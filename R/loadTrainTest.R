@@ -13,7 +13,7 @@
 #' @details 
 #' This function returns a list with the train and test data that will be used for train and prediction.
 #' 
-#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis, Charalampos Bratsas
 #' 
 #' @return A list with the following components:
 #' \itemize{
@@ -23,6 +23,13 @@
 #'  
 #' 
 #' @rdname loadTrainTest
+#' 
+#' @examples 
+#' SpecLink <- loadDataSpecLink("163204843","1", X163204843_1)
+#' x <- fillMissingValues(SpecLink)
+#' datetime <- "2017-01-27 14:00:00" 
+#' newData <- fillMissingDates (x, datetime)
+#' DataList <- loadTrainTest (newData, datetime, "Mean_speed")
 #'
 #' @export
 

@@ -11,7 +11,7 @@
 #' @details 
 #' This function returns a data frame with the traffic data of the roads of Thessaloniki ordered by the roads.
 #' 
-#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis
+#' @author Aikaterini Chatzopoulou, Kleanthis Koupidis, Charalampos Bratsas
 #' 
 #' @return 
 #' Returns a data frame.

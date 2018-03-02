@@ -18,9 +18,14 @@ This function fills the missing values from the data.
 \details{
 This function returns a data frame without missing values.
 }
+\examples{
+SpecLink <- loadDataSpecLink("163204843","1", X163204843_1)
+x <- fillMissingValues(SpecLink)
+
+}
 \seealso{
 \code{\link{loadData}}
 }
 \author{
-Aikaterini Chatzopoulou, Kleanthis Koupidis
+Aikaterini Chatzopoulou, Kleanthis Koupidis, Charalampos Bratsas
 }

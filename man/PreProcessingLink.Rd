@@ -26,6 +26,15 @@ This function processes the data.
 \details{
 This function returns as a list object the parameters needed to train the model and predict.
 }
+\examples{
+SpecLink <- loadDataSpecLink("163204843","1", X163204843_1)
+x <- fillMissingValues(SpecLink)
+datetime <- "2017-01-27 14:00:00" 
+newData <- fillMissingDates (x, datetime)
+DataList <- loadTrainTest (newData, datetime, "Mean_speed")
+List <- PreProcessingLink(DataList)
+
+}
 \author{
 Aikaterini Chatzopoulou, Kleanthis Koupidis
 }

@@ -20,6 +20,16 @@
 #' 
 #' @rdname TrainCR
 #' 
+#' @examples 
+#' \dontrun{
+#' SpecLink <- loadDataSpecLink("163204843","1", X163204843_1)
+#' x <- fillMissingValues(SpecLink)
+#' datetime <- "2017-01-27 14:00:00" 
+#' newData <- fillMissingDates (x, datetime)
+#' DataList <- loadTrainTest (newData, datetime, "Mean_speed")
+#' List <- PreProcessingLink(DataList)
+#' NNout <- TrainCR (List,"Mean_speed")}
+#' 
 #' @importFrom caret trainControl
 #' @importFrom caret train
 #' @export
@@ -47,8 +57,8 @@ TrainCR <-function(List, predict){
   NNgrid = expand.grid(layer1 = c(4,5),layer2 = c(3,4),layer3 = c(4))
   
   NNOut = caret::train(f, data = trainset,method = "neuralnet", 
-                trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE,
-                na.action = stats::na.exclude)
+                       trControl = fitControl, tuneGrid = NNgrid, linear.output = TRUE,
+                       na.action = stats::na.exclude)
   
   
   cat("Training Completed.\n")

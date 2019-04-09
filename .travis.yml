@@ -8,28 +8,7 @@ r:
   - devel  
 before_install:
   - tlmgr install index
-github_packages:
-  - devtools
-r_packages:
- - covr
- - stats
- - rmarkdown
- - knitr
- - devtools
- - caret
- - dplyr
- - graphics
- - grDevices
- - jsonlite
- - lubridate
- - RCurl
- - readr
- - reshape
- - stats
- - zoo
 apt_packages:
   - libxml2-dev
 sudo: required
 warnings_are_errors: false
-after_success:
-  - Rscript -e 'covr::codecov()'

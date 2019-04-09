@@ -26,7 +26,9 @@ License: GPL-2 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: caret, data.table, dplyr, lubridate, RCurl, stats, zoo
-Suggests: knitr,
+Suggests: 
+    devtools,
+    knitr,
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1

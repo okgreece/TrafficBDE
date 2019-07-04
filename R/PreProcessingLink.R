@@ -51,7 +51,7 @@ PreProcessingLink <- function(DataList){
   rownames(testset) <- as.character(testData$Date)
   
   
-  scl <- function(x){ (x - min(x))/(max(x) - min(x)) }
+  scl <- function(x){ if (min(x)!=max(x)) (x - min(x))/(max(x) - min(x)) else x}
   
   Min = apply(trainset,2,min)
   Max = apply(trainset,2,max)

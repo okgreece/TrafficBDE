@@ -43,7 +43,7 @@ PredictionCR <- function(List,NNOut,predict){
   testset = List[[2]]
   
   llll=list()
-  for(i in 1:8)  eval(parse(text=paste("llll[[",i,"]]=(testset[,",i,"] - Min[",i,"])/(Max[",i,"] - Min[",i,"] )")))
+  for(i in 1:8)  eval(parse(text=paste("llll[[",i,"]]=ifelse(Max[",i,"] == Min[",i,"], Max[",i,"],(testset[,",i,"] - Min[",i,"])/(Max[",i,"] - Min[",i,"]))")))
   
   
   a=as.data.frame(t(unlist(llll)))
@@ -66,6 +66,6 @@ PredictionCR <- function(List,NNOut,predict){
   result = as.numeric(c(Predictions,
                         Observations,
                         RMSE))
-  
+  names(result) <- c("Predicted", "Real Value", "RMSE")
   return(result)
 }

@@ -43,11 +43,11 @@ PredictionCR <- function(List,NNOut,predict){
   testset = List[[2]]
   
   llll=list()
-  for(i in 1:8)  eval(parse(text=paste("llll[[",i,"]]=ifelse(Max[",i,"] == Min[",i,"], Max[",i,"],(testset[,",i,"] - Min[",i,"])/(Max[",i,"] - Min[",i,"]))")))
+    for(i in 1:length(names(testset)))  eval(parse(text=paste("llll[[",i,"]]=ifelse(Max[",i,"] == Min[",i,"], Max[",i,"],(testset[,",i,"] - Min[",i,"])/(Max[",i,"] - Min[",i,"]))")))
   
   
-  a=as.data.frame(t(unlist(llll)))
-  names(a)=names(testset)
+  a <- as.data.frame(t(unlist(llll)))
+  names(a) <- names(unlist(testset))
   
   a <- subset(a,select=colnames(a)[which(colnames(a)!=predict)])
   NNOut.predict = stats::predict(NNOut,a)

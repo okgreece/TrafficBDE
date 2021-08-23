@@ -51,8 +51,8 @@ loadTrainTest <- function (Data, datetime, predict)
   Data2$Date <- as.POSIXct(strptime(as.character(Data2$Date),format='%Y-%m-%d %H:%M:%S', 
                                     tz="Europe/Istanbul"))
   
-  Data2[,-1] <- as.data.frame(apply(Data2[,-1],2,as.character))
-  Data2[,-1] <- as.data.frame(apply(Data2[,-1],2,as.numeric))
+  # Data2[,-1] <- as.data.frame(apply(Data2[,-1],2,as.character))
+  # Data2[,-1] <- as.data.frame(apply(Data2[,-1],2,as.numeric))
   
   trainData <- Data2[which(Data2$Date < datetime),]
   testData <- Data2[which(Data2$Date == datetime),]

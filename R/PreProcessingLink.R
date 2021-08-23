@@ -53,10 +53,10 @@ PreProcessingLink <- function(DataList){
   
   scl <- function(x){ if (min(x)!=max(x)) (x - min(x))/(max(x) - min(x)) else x}
   
-  Min = apply(trainset,2,min)
-  Max = apply(trainset,2,max)
+  Min = apply(nums(trainset),2,min)
+  Max = apply(nums(trainset),2,max)
   
-  normalData = as.data.frame(apply(trainset,2,scl))
+  normalData = as.data.frame(apply(nums(trainset),2,scl))
   
   trainDataScaled = normalData
   

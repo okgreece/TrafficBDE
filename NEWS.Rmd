@@ -1,3 +1,7 @@
+TrafficBDE 0.1.1
+============================
+fix NAN on unique entries, fix predictions
+
 TrafficBDE 0.0.2
 ============================
 Upload data file.

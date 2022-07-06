@@ -39,14 +39,14 @@ kStepsForward <- function (Data, Link_id, direction, datetime, predict, steps){
   DataLink <- loadDataSpecLink(Link_id, direction, Data)
   
   DataLinkNA <- fillMissingValues(DataLink)
+  DataLinkNA <- as.data.frame(DataLinkNA)
   
   datetime <- as.POSIXct(strptime(datetime,'%Y-%m-%d %H:%M:%S',tz="Europe/Istanbul"))
   minutes <- lubridate::minute(datetime)
   
   Result = matrix(nrow = steps , ncol = 3,dimnames = list(c(1:steps),
                                                           c("Predicted", "Real Value", "RMSE")))
-  
-  for (i in 1:(steps)){
+  for ( i in 1:(steps)){
     dateSt <- stats::update(datetime , minutes = minutes -15*(steps-i))
     
     DataAll <- fillMissingDates(DataLinkNA, dateSt)
@@ -62,7 +62,8 @@ kStepsForward <- function (Data, Link_id, direction, datetime, predict, steps){
     
     rownames(Result)[i] <- as.character(dateSt)
     
-    DataLinkNA[which(DataLinkNA$Date == dateSt),which(colnames(DataLinkNA)==predict)] = Result[i,1] #next step
+    
+    DataLinkNA[which(DataLinkNA$Date == dateSt),which(colnames(DataLinkNA)==predict)] <- Result[i,1] #next step
     
   }
   return(Result)

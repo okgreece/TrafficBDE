@@ -19,7 +19,7 @@ Author: Kleanthis Koupidis [aut, cre],
         Charalampos Bratsas [aut],
         Panagiotis Tzenos [dtc],
         Josep Maria Salanova [dtc]
-Maintainer: Kleanthis Chatzopoulou <koupidis@okfn.gr>
+Maintainer: Kleanthis Koupidis <koupidis@okfn.gr>
 URL: https://github.com/okgreece/TrafficBDE
 BugReports: https://github.com/okgreece/TrafficBDE/issues
 License: GPL-2 | file LICENSE

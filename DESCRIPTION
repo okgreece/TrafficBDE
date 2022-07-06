@@ -29,5 +29,6 @@ Imports: caret, data.table, DescriptiveStats.OBeu, dplyr, lubridate, RCurl, stat
 Suggests: 
     devtools,
     knitr,
+    neuralnet,
     rmarkdown
 VignetteBuilder: knitr

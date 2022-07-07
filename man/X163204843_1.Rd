@@ -3,7 +3,9 @@
 \name{X163204843_1}
 \alias{X163204843_1}
 \title{Sample data from Traffic BDE}
-\format{RData file}
+\format{
+RData file
+}
 \source{
 TrafficBDE
 }

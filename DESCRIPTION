@@ -2,24 +2,14 @@ Package: TrafficBDE
 Type: Package
 Title: Traffic predictions using 
 Version: 0.1.1
-Date: 2022-07-06
-Description: Estimate and return either the traffic speed or the car entries in the city of Thessaloniki using historical traffic data. It's used in transport pilot <http://trafficstatusprediction.imet.gr/> of the 'BigDataEurope' project <https://www.big-data-europe.eu/>. There are functions for processing these data, training a neural network, select the most appropriate model and predict the traffic speed or the car entries for a selected time date.
-Author@R: c(person("Kleanthis", "Koupidis", role = c("aut", "cre"),
-                     email ="koupidis@okfn.gr"),
-            person("Aikaterini", "Chatzopoulou", role = "aut",
-                     email = "kchatzopoul@okfn.gr"),
-              person("Charalampos","Bratsas", role = "aut"
-                      email = "charalampos.bratsas@okfn.org"),
-              person("Panagiotis", "Tzenos", role = "dtc",
-                     email = "ptzenos@certh.gr"),
-              person("Josep Maria", "Salanova", role = "dtc",
-                     email = "jose@certh.gr"))
+Date: 2022-07-07
+Description: Estimate and return either the traffic speed or the car entries in the city of Thessaloniki using historical traffic data. It's used in transport pilot of the 'BigDataEurope' project. There are functions for processing these data, training a neural network, select the most appropriate model and predict the traffic speed or the car entries for a selected time date.
 Author: Kleanthis Koupidis [aut, cre], 
         Aikaterini Chatzopoulou [aut], 
         Charalampos Bratsas [aut],
         Panagiotis Tzenos [dtc],
         Josep Maria Salanova [dtc]
-Maintainer: Kleanthis Koupidis <koupidis@okfn.gr>
+Maintainer: Kleanthis Koupidis <koupidis.okfgr@gmail.com>
 URL: https://github.com/okgreece/TrafficBDE
 BugReports: https://github.com/okgreece/TrafficBDE/issues
 License: GPL-2 | file LICENSE
@@ -32,3 +22,4 @@ Suggests:
     neuralnet,
     rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 7.2.0

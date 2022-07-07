@@ -1,6 +1,6 @@
 Package: TrafficBDE
 Type: Package
-Title: Traffic predictions using 
+Title: Traffic Predictions Using Neural Networks
 Version: 0.1.1
 Date: 2022-07-07
 Description: Estimate and return either the traffic speed or the car entries in the city of Thessaloniki using historical traffic data. It's used in transport pilot of the 'BigDataEurope' project. There are functions for processing these data, training a neural network, select the most appropriate model and predict the traffic speed or the car entries for a selected time date.
